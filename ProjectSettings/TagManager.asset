@@ -9,6 +9,7 @@ TagManager:
   - FallOffScreen
   - FinishTrophy
   - Enemy
+  - SkillPoint
   layers:
   - Default
   - TransparentFX

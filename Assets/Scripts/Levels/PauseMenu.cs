@@ -7,11 +7,12 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenu;
-
+    public GameObject skillTree;
 
     private void Start()
     {
         pauseMenu.SetActive(false);
+        skillTree.SetActive(false);
         Debug.Log(pauseMenu);
         Debug.Log(GameIsPaused);
 
@@ -70,6 +71,15 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         GameIsPaused = false;
+    }
+
+    public void SkillTree()
+    {
+        pauseMenu.SetActive(false);
+        skillTree.SetActive(true);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        AudioListener.pause = false;
     }
 
     public void QuitGame()
