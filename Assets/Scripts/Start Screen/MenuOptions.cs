@@ -17,7 +17,7 @@ public class MenuOptions : MonoBehaviour
 
     public void Leaderboard()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(6);
     }
 
     public void MainMenu()

@@ -8,11 +8,12 @@ TagManager:
   - Trap
   - FallOffScreen
   - FinishTrophy
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemies
   - Water
   - UI
   - Ground
