@@ -38,6 +38,14 @@ public class ItemCollector : MonoBehaviour
             AllCherriesCollected();
 
         }
+
+        else if(collision.gameObject.CompareTag("SkillPoint"))
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("Skill Point Collected");
+            PlayerLife.S.skillPoints++;
+            //Data.S.skillpoints++;
+        }
     }
 
     public void AllCherriesCollected()
