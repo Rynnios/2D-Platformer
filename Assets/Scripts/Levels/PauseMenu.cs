@@ -65,6 +65,13 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(0);
         GameIsPaused = false;
     }
+
+    public void HubWorld()
+    {
+        SceneManager.LoadScene(1);
+        GameIsPaused = false;
+    }
+
     public void QuitGame()
     {
         Application.Quit();
