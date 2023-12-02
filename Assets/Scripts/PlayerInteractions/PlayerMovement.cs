@@ -13,9 +13,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask jumpableGround;
 
     private float dirX = 0f;
-    [SerializeField] private float moveSpeed = 7f;      //SerializeField hides from other scripts but allows you to modify values in unity
+    public float moveSpeed = 7f;      //SerializeField hides from other scripts but allows you to modify values in unity
     [SerializeField] private float jumpStrength = 25f;
     private enum MovementState { idle, running, jumping, falling}   //idle has int value of 0
+
+
+    static public PlayerMovement S;
+
+    private void Awake()
+    {
+        S = this; 
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -24,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         spriteRend = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        moveSpeed = Data.S.moveSpeed;
     }
 
     // Update is called once per frame
