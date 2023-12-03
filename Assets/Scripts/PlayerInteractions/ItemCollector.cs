@@ -14,8 +14,10 @@ public class ItemCollector : MonoBehaviour
     {
         //Makes it impossible to win until all cherries are collected by disabling collider of trophy until conditions are met
         Finish = GameObject.FindGameObjectWithTag("FinishTrophy");
-        Finish.GetComponent<BoxCollider2D>().enabled = false;
-
+        if (Finish != null) // We need to include this for the hub world which doesn't have a trophy
+        {
+            Finish.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 
     //Count cherries to know if you completed the level
@@ -36,7 +38,6 @@ public class ItemCollector : MonoBehaviour
             cherriesText.text = "Cherries: " + cherries;
 
             AllCherriesCollected();
-
         }
 
         else if(collision.gameObject.CompareTag("SkillPoint"))
