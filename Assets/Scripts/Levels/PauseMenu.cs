@@ -13,9 +13,6 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         skillTree.SetActive(false);
-        Debug.Log(pauseMenu);
-        Debug.Log(GameIsPaused);
-
         Resume();
     }
 
@@ -58,20 +55,23 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
         GameIsPaused = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
         GameIsPaused = false;
+        SceneManager.LoadScene(0);
     }
 
     public void HubWorld()
     {
-        SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
         GameIsPaused = false;
+        SceneManager.LoadScene(1);
     }
 
     public void SkillTree()
