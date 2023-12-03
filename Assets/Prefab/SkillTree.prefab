@@ -153,7 +153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1976862064963809600
 RectTransform:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treeUI: {fileID: 4638218054857028792}
-  menuUI: {fileID: 0}
+  menuUI: {fileID: 8453876933219217439, guid: 13a904e96b4cd39468f0bf5470a9679f, type: 3}
   speedBtn1: {fileID: 3980581429879940324}
   speedBtn2: {fileID: 8878288242778814578}
   hpBtn1: {fileID: 5187906414821265480}
@@ -291,7 +291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -187.7, y: -11.8}
+  m_AnchoredPosition: {x: -100, y: -11}
   m_SizeDelta: {x: 2000, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7461446650995885324
@@ -344,7 +344,6 @@ GameObject:
   - component: {fileID: 6345652106657624091}
   - component: {fileID: 4638734328134833074}
   - component: {fileID: 103239463274640928}
-  - component: {fileID: 8010639033171865878}
   m_Layer: 5
   m_Name: cooldown1
   m_TagString: Untagged
@@ -454,7 +453,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8010639033171865878}
+      - m_Target: {fileID: 936908252215145256}
         m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
         m_MethodName: CooldownReduce1
         m_Mode: 1
@@ -466,26 +465,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8010639033171865878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2651243672571422582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74ef86c9cf5f8a4ab6bf973d7bf3470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  treeUI: {fileID: 4638218054857028792}
-  menuUI: {fileID: 0}
-  speedBtn1: {fileID: 3980581429879940324}
-  speedBtn2: {fileID: 8878288242778814578}
-  hpBtn1: {fileID: 5187906414821265480}
-  hpBtn2: {fileID: 7660876743400823490}
-  cooldownBtn1: {fileID: 2651243672571422582}
-  cooldownBtn2: {fileID: 6626290229466634733}
 --- !u!1 &2832027562452685716
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,7 +880,6 @@ GameObject:
   - component: {fileID: 1514095390987388540}
   - component: {fileID: 7459583993027522375}
   - component: {fileID: 8122958457354226720}
-  - component: {fileID: 3942341760233746743}
   m_Layer: 5
   m_Name: speed1
   m_TagString: Untagged
@@ -1011,7 +989,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3942341760233746743}
+      - m_Target: {fileID: 936908252215145256}
         m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
         m_MethodName: SpeedIncrease1
         m_Mode: 1
@@ -1023,26 +1001,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3942341760233746743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3980581429879940324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74ef86c9cf5f8a4ab6bf973d7bf3470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  treeUI: {fileID: 4638218054857028792}
-  menuUI: {fileID: 0}
-  speedBtn1: {fileID: 3980581429879940324}
-  speedBtn2: {fileID: 8878288242778814578}
-  hpBtn1: {fileID: 5187906414821265480}
-  hpBtn2: {fileID: 7660876743400823490}
-  cooldownBtn1: {fileID: 2651243672571422582}
-  cooldownBtn2: {fileID: 6626290229466634733}
 --- !u!1 &4062226079042042594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1147,6 @@ GameObject:
   - component: {fileID: 5298983755045895301}
   - component: {fileID: 4400714368210946833}
   - component: {fileID: 7244187503115254119}
-  - component: {fileID: 4030072383575660500}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -1299,7 +1256,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4030072383575660500}
+      - m_Target: {fileID: 936908252215145256}
         m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -1311,26 +1268,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4030072383575660500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4124912454337412375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74ef86c9cf5f8a4ab6bf973d7bf3470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  treeUI: {fileID: 4638218054857028792}
-  menuUI: {fileID: 0}
-  speedBtn1: {fileID: 3980581429879940324}
-  speedBtn2: {fileID: 8878288242778814578}
-  hpBtn1: {fileID: 5187906414821265480}
-  hpBtn2: {fileID: 7660876743400823490}
-  cooldownBtn1: {fileID: 2651243672571422582}
-  cooldownBtn2: {fileID: 6626290229466634733}
 --- !u!1 &4638218054857028792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,7 +1321,6 @@ GameObject:
   - component: {fileID: 7837426684483066315}
   - component: {fileID: 7807672178620012438}
   - component: {fileID: 342591108066293790}
-  - component: {fileID: 934844056986511769}
   m_Layer: 5
   m_Name: hp1
   m_TagString: Untagged
@@ -1494,7 +1430,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 934844056986511769}
+      - m_Target: {fileID: 936908252215145256}
         m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
         m_MethodName: HpIncrease1
         m_Mode: 1
@@ -1506,26 +1442,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &934844056986511769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5187906414821265480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74ef86c9cf5f8a4ab6bf973d7bf3470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  treeUI: {fileID: 4638218054857028792}
-  menuUI: {fileID: 0}
-  speedBtn1: {fileID: 3980581429879940324}
-  speedBtn2: {fileID: 8878288242778814578}
-  hpBtn1: {fileID: 5187906414821265480}
-  hpBtn2: {fileID: 7660876743400823490}
-  cooldownBtn1: {fileID: 2651243672571422582}
-  cooldownBtn2: {fileID: 6626290229466634733}
 --- !u!1 &6607361321114436925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,7 +1588,6 @@ GameObject:
   - component: {fileID: 4114703142350742794}
   - component: {fileID: 4046445356861490460}
   - component: {fileID: 1861693113751138688}
-  - component: {fileID: 8334070116876587281}
   m_Layer: 5
   m_Name: cooldown2
   m_TagString: Untagged
@@ -1782,7 +1697,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8334070116876587281}
+      - m_Target: {fileID: 936908252215145256}
         m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
         m_MethodName: CooldownReduce2
         m_Mode: 1
@@ -1794,26 +1709,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8334070116876587281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6626290229466634733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74ef86c9cf5f8a4ab6bf973d7bf3470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  treeUI: {fileID: 4638218054857028792}
-  menuUI: {fileID: 0}
-  speedBtn1: {fileID: 3980581429879940324}
-  speedBtn2: {fileID: 8878288242778814578}
-  hpBtn1: {fileID: 5187906414821265480}
-  hpBtn2: {fileID: 7660876743400823490}
-  cooldownBtn1: {fileID: 2651243672571422582}
-  cooldownBtn2: {fileID: 6626290229466634733}
 --- !u!1 &7660876743400823490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,7 +1721,6 @@ GameObject:
   - component: {fileID: 6802190109315926489}
   - component: {fileID: 4295778571936477974}
   - component: {fileID: 672519418120255850}
-  - component: {fileID: 3101157579731274391}
   m_Layer: 5
   m_Name: hp2
   m_TagString: Untagged
@@ -1936,7 +1830,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3101157579731274391}
+      - m_Target: {fileID: 936908252215145256}
         m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
         m_MethodName: HpIncrease2
         m_Mode: 1
@@ -1948,26 +1842,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3101157579731274391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7660876743400823490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74ef86c9cf5f8a4ab6bf973d7bf3470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  treeUI: {fileID: 4638218054857028792}
-  menuUI: {fileID: 0}
-  speedBtn1: {fileID: 3980581429879940324}
-  speedBtn2: {fileID: 8878288242778814578}
-  hpBtn1: {fileID: 5187906414821265480}
-  hpBtn2: {fileID: 7660876743400823490}
-  cooldownBtn1: {fileID: 2651243672571422582}
-  cooldownBtn2: {fileID: 6626290229466634733}
 --- !u!1 &8287776142610540596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,7 +2126,6 @@ GameObject:
   - component: {fileID: 6987468492549244375}
   - component: {fileID: 588887628401515738}
   - component: {fileID: 3236206105391114105}
-  - component: {fileID: 7655526055752383922}
   m_Layer: 5
   m_Name: speed2
   m_TagString: Untagged
@@ -2362,7 +2235,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7655526055752383922}
+      - m_Target: {fileID: 936908252215145256}
         m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
         m_MethodName: SpeedIncrease2
         m_Mode: 1
@@ -2374,26 +2247,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7655526055752383922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8878288242778814578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74ef86c9cf5f8a4ab6bf973d7bf3470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  treeUI: {fileID: 4638218054857028792}
-  menuUI: {fileID: 0}
-  speedBtn1: {fileID: 3980581429879940324}
-  speedBtn2: {fileID: 8878288242778814578}
-  hpBtn1: {fileID: 5187906414821265480}
-  hpBtn2: {fileID: 7660876743400823490}
-  cooldownBtn1: {fileID: 2651243672571422582}
-  cooldownBtn2: {fileID: 6626290229466634733}
 --- !u!1 &9202109989764683698
 GameObject:
   m_ObjectHideFlags: 0

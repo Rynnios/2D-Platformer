@@ -49,6 +49,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenu.SetActive(false);
+        skillTree.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
         AudioListener.pause = false;
@@ -77,14 +78,5 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         skillTree.SetActive(true);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-        AudioListener.pause = false;
     }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-
 }
