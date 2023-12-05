@@ -312,7 +312,7 @@ Transform:
   m_GameObject: {fileID: 523732539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.034006, y: -0.5810377, z: -10}
+  m_LocalPosition: {x: -10.709627, y: -0.5468337, z: -10}
   m_LocalScale: {x: 1, y: 2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20321,6 +20321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillTree
       objectReference: {fileID: 0}
+    - target: {fileID: 1551938572144770925, guid: 716d09604712a054bb7e2f5388930cfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1976862064963809600, guid: 716d09604712a054bb7e2f5388930cfd, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -20719,7 +20723,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 33.8, y: -23.4}
+  m_AnchoredPosition: {x: 33.799988, y: -23.400024}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1180936240
@@ -30904,6 +30908,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1805672958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1805672960}
+  - component: {fileID: 1805672959}
+  m_Layer: 0
+  m_Name: DataHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1805672959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805672958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc98485dedc16547a013af6afa2f3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillPoints: 0
+  cooldownReducer: 0
+  moveSpeed: 7
+  maxHealth: 3
+  currentHealth: 3
+  speedBtn1Disabled: 0
+  speedBtn2Disabled: 0
+  hpBtn1Disabled: 0
+  hpBtn2Disabled: 0
+  cooldownBtn1Disabled: 0
+  cooldownBtn2Disabled: 0
+--- !u!4 &1805672960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805672958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 558.88434, y: 67.22564, z: -4.7284427}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1857512732
 GameObject:
   m_ObjectHideFlags: 0
@@ -30954,7 +31013,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5cb1ce98e499f4eb3ac9968820b772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillPoints: 0
+  maxHealth: 0
+  currentHealth: 0
 --- !u!114 &1857512735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30970,6 +31030,7 @@ MonoBehaviour:
   Finish: {fileID: 0}
   completedCherryReq: {fileID: 0}
   cherriesText: {fileID: 0}
+  skillPointsText: {fileID: 0}
 --- !u!95 &1857512736
 Animator:
   serializedVersion: 5
@@ -31006,7 +31067,6 @@ MonoBehaviour:
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64
-  moveSpeed: 7
   jumpStrength: 14
 --- !u!61 &1857512738
 BoxCollider2D:
@@ -31193,3 +31253,4 @@ SceneRoots:
   - {fileID: 1200357636}
   - {fileID: 458567482}
   - {fileID: 815915792}
+  - {fileID: 1805672960}
