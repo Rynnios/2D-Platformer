@@ -10,9 +10,23 @@ public class ItemCollector : MonoBehaviour
     public GameObject Finish;
 
 
+    // Count cherries to know if you completed the level
+    private int targetCherries = 5; // Maybe this can be set with a param for each level later
+    private int currentCherries = 0;
+    
+    // Item sounds
+    public AudioSource completedCherryReq;
+
+    // Text fields
+    [SerializeField] private TMP_Text cherriesText;
+    [SerializeField] private TMP_Text skillPointsText;
+
     private void Start()
     {
-        //Makes it impossible to win until all cherries are collected by disabling collider of trophy until conditions are met
+        // Initialize text fields
+        cherriesText.text = ": " + currentCherries + "/" + targetCherries;
+
+        // Makes it impossible to win until all cherries are collected by disabling collider of trophy until conditions are met
         Finish = GameObject.FindGameObjectWithTag("FinishTrophy");
         if (Finish != null) // We need to include this for the hub world which doesn't have a trophy
         {
@@ -20,26 +34,20 @@ public class ItemCollector : MonoBehaviour
         }
     }
 
-    //Count cherries to know if you completed the level
-    private int cherries = 5;
-    public AudioSource completedCherryReq;
-
-
-    [SerializeField] private TMP_Text cherriesText;
-
+    // Item collection handler
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //The tag connected to game object Cherry, which is "Cherry" in this case
+        // Collect cherry
         if (collision.gameObject.CompareTag("Cherry"))
         {
             Destroy(collision.gameObject);
-            cherries--;
-            Debug.Log("Cherries: " + cherries);
-            cherriesText.text = "Cherries: " + cherries;
+            currentCherries++;
+            cherriesText.text = ": " + currentCherries + "/" + targetCherries;
 
             AllCherriesCollected();
         }
 
+        // Collect skill point (pineapple)
         else if(collision.gameObject.CompareTag("SkillPoint"))
         {
             Destroy(collision.gameObject);
@@ -51,7 +59,7 @@ public class ItemCollector : MonoBehaviour
 
     public void AllCherriesCollected()
     {
-        if (cherries == 0)
+        if (currentCherries == targetCherries)
         {
             completedCherryReq.Play();
             Finish.GetComponent<BoxCollider2D>().enabled = true;
