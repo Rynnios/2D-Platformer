@@ -1047,7 +1047,7 @@ MonoBehaviour:
   nameInputField: {fileID: 2028554755149408836}
   warningMessage: {fileID: 8846655774291380326}
   leaderboardManager: {fileID: 7221090903439519125}
-  transitionSpeed: 0.5
+  transitionSpeed: 0.3
 --- !u!4 &1350023254
 Transform:
   m_ObjectHideFlags: 0
