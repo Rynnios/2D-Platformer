@@ -8,7 +8,8 @@ public class PlayerLife : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody2D rb;
-    public int skillPoints = 0;
+    public float maxHealth;
+    public float currentHealth;
 
     static public PlayerLife S; //singleton
 
@@ -20,16 +21,28 @@ public class PlayerLife : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        maxHealth = Data.S.maxHealth;
+        currentHealth = Data.S.currentHealth;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        skillPoints = Data.S.skillPoints;
+        currentHealth = maxHealth;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("FallOffScreen"))
+        if (collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("FallOffScreen"))
         {
             PlayerDies();
+        }
+
+        else if(collision.gameObject.CompareTag("Enemy"))
+        {
+            currentHealth--;
+            Data.S.currentHealth = currentHealth;
+            if (currentHealth == 0f)
+            {
+                PlayerDies();
+            }
         }
     }
 
