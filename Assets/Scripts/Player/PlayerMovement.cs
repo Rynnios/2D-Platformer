@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
-
     private SpriteRenderer spriteRend;
     private Animator animator;
 
@@ -16,8 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpStrength = 25f;
     private enum MovementState { idle, running, jumping, falling}   //idle has int value of 0
 
-
     static public PlayerMovement S;
+
+    public AudioSource jumpSound;
 
     private void Awake()
     {
@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && OnGround() )
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(rb.velocity.x, jumpStrength);
+            jumpSound.Play();
         }
 
         UpdateAnimationState();

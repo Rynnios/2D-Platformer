@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -10,6 +8,7 @@ public class PlayerLife : MonoBehaviour
     private Rigidbody2D rb;
     public delegate void OnHealthChangedDelegate();
     public OnHealthChangedDelegate onHealthChangedCallback;
+    public AudioSource deathSound;
 
     // Don't know why it's spelt "Sigleton"
     #region Sigleton 
@@ -25,9 +24,9 @@ public class PlayerLife : MonoBehaviour
     }
     #endregion
 
-    public float currentHealth;
-    public float maxHealth;
-    public float maxTotalHealth;
+    private float currentHealth = 3;
+    private float maxHealth = 3;
+    private float maxTotalHealth = 5;
 
     public float Health { get { return currentHealth; } }
     public float MaxHealth { get { return maxHealth; } }
@@ -74,6 +73,7 @@ public class PlayerLife : MonoBehaviour
             if (onHealthChangedCallback != null)
                 onHealthChangedCallback.Invoke();
         }
+        Data.S.maxHealth = maxHealth;
         Data.S.currentHealth = currentHealth;
     }
 
@@ -104,8 +104,16 @@ public class PlayerLife : MonoBehaviour
 
     private void PlayerDies()
     {
+        deathSound.Play();
         animator.SetTrigger("death");
         rb.bodyType = RigidbodyType2D.Static;
+
+        StartCoroutine(DeathDelay());
+    }
+
+    IEnumerator DeathDelay() // Delay death so animation can play out a bit longer
+    {
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

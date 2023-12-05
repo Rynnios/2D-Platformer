@@ -14,6 +14,11 @@ public class Finish : MonoBehaviour
 
     public TextMeshProUGUI timerText;
 
+    private void Start()
+    {
+        startTime = Time.time;
+    }
+
     private void Update()
     {
         if (gameFinished) return;

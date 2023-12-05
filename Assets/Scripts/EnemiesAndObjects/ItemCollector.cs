@@ -9,12 +9,13 @@ public class ItemCollector : MonoBehaviour
     static public ItemCollector instance;
     public GameObject Finish;
 
-
     // Count cherries to know if you completed the level
     private int targetCherries = 5; // Maybe this can be set with a param for each level later
     private int currentCherries = 0;
-    
+
     // Item sounds
+    public AudioSource getCherry;
+    public AudioSource getSkillPoint;
     public AudioSource completedCherryReq;
 
     // Text fields
@@ -24,7 +25,8 @@ public class ItemCollector : MonoBehaviour
     private void Start()
     {
         // Initialize text fields
-        cherriesText.text = ": " + currentCherries + "/" + targetCherries;
+        if (cherriesText != null)
+            cherriesText.text = ": " + currentCherries + "/" + targetCherries;
         skillPointsText.text = ": " + Data.S.skillPoints;
 
         // Makes it impossible to win until all cherries are collected by disabling collider of trophy until conditions are met
@@ -42,6 +44,7 @@ public class ItemCollector : MonoBehaviour
         if (collision.gameObject.CompareTag("Cherry"))
         {
             Destroy(collision.gameObject);
+            getCherry.Play();
             currentCherries++;
             cherriesText.text = ": " + currentCherries + "/" + targetCherries;
 
@@ -52,6 +55,7 @@ public class ItemCollector : MonoBehaviour
         else if(collision.gameObject.CompareTag("SkillPoint"))
         {
             Destroy(collision.gameObject);
+            getSkillPoint.Play();
             Data.S.skillPoints++;
 
             skillPointsText.text = ": " + Data.S.skillPoints; 
@@ -64,6 +68,7 @@ public class ItemCollector : MonoBehaviour
         {
             completedCherryReq.Play();
             Finish.GetComponent<BoxCollider2D>().enabled = true;
+            Finish.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f); 
         } 
     }
 }
