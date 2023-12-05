@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 1656367567}
   - component: {fileID: 1656367566}
   m_Layer: 0
-  m_Name: Data
+  m_Name: DataHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1134,6 +1134,7 @@ MonoBehaviour:
   cooldownReducer: 0
   moveSpeed: 7
   maxHealth: 3
+  currentHealth: 3
   speedBtn1Disabled: 0
   speedBtn2Disabled: 0
   hpBtn1Disabled: 0
