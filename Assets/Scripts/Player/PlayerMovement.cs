@@ -36,10 +36,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        dirX = Input.GetAxisRaw("Horizontal");        //GetAxisRaw makes it so value doesn't go to 0 immediately after releasing button
+        dirX = Input.GetAxisRaw("Horizontal"); //GetAxisRaw makes it so value doesn't go to 0 immediately after releasing button
         rb.velocity = new Vector2 (dirX * Data.S.moveSpeed, rb.velocity.y);
         
-
         if (Input.GetButtonDown("Jump") && OnGround() )
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(rb.velocity.x, jumpStrength);
