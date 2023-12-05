@@ -25,6 +25,7 @@ public class ItemCollector : MonoBehaviour
     {
         // Initialize text fields
         cherriesText.text = ": " + currentCherries + "/" + targetCherries;
+        skillPointsText.text = ": " + Data.S.skillPoints;
 
         // Makes it impossible to win until all cherries are collected by disabling collider of trophy until conditions are met
         Finish = GameObject.FindGameObjectWithTag("FinishTrophy");
@@ -51,8 +52,9 @@ public class ItemCollector : MonoBehaviour
         else if(collision.gameObject.CompareTag("SkillPoint"))
         {
             Destroy(collision.gameObject);
-            Debug.Log("Skill Point Collected");
             Data.S.skillPoints++;
+
+            skillPointsText.text = ": " + Data.S.skillPoints; 
         }
     }
 
