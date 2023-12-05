@@ -45,11 +45,11 @@ public class SkillTree : MonoBehaviour
 
     public void CooldownReduce1()
     {
-        if (PlayerLife.S.skillPoints >= 1)
+        if (Data.S.skillPoints >= 1)
         {
-            //Data.S.cooldownBtn1Disabled = true;
+            Data.S.cooldownBtn1Disabled = true;
             cooldownBtn1.SetActive(false);
-            PlayerLife.S.skillPoints -= 1;
+            Data.S.skillPoints -= 1;
             //PlayerLife.S.SetText();
             //Player.S.cooldownReducer += 5;
         }
@@ -57,11 +57,11 @@ public class SkillTree : MonoBehaviour
 
     public void CooldownReduce2()
     {
-        if (PlayerLife.S.skillPoints >= 1)
+        if (Data.S.skillPoints >= 1)
         {
-            //Data.S.cooldownBtn2Disabled = true;
+            Data.S.cooldownBtn2Disabled = true;
             cooldownBtn2.SetActive(false);
-            PlayerLife.S.skillPoints -= 1;
+            Data.S.skillPoints -= 1;      
             //PlayerLife.S.SetText();
             //Player.S.cooldownReducer += 5;
         }
@@ -69,49 +69,51 @@ public class SkillTree : MonoBehaviour
 
     public void SpeedIncrease1()
     {
-        if (PlayerLife.S.skillPoints >= 1)
+        if (Data.S.skillPoints >= 1)
         {
-            //Data.S.speedBtn1Disabled = true;
+            Data.S.speedBtn1Disabled = true;
             speedBtn1.SetActive(false);
-            PlayerLife.S.skillPoints -= 1;
+            Data.S.skillPoints -= 1;
             //PlayerLife.S.SetText();
-            PlayerMovement.S.moveSpeed += 1f;
+            Data.S.moveSpeed += 1f;
         }
     }
 
     public void SpeedIncrease2()
     {
-        if (PlayerLife.S.skillPoints >= 1)
+        if (Data.S.skillPoints >= 1)
         {
-            //Data.S.speedBtn2Disabled = true;
+            Data.S.speedBtn2Disabled = true;
             speedBtn2.SetActive(false);
-            PlayerLife.S.skillPoints -= 1;
+            Data.S.skillPoints -= 1;
             //PlayerLife.S.SetText();
-            PlayerMovement.S.moveSpeed += 1f;
+            Data.S.moveSpeed += 1f;
         }
     }
 
     public void HpIncrease1()
     {
-        if (PlayerLife.S.skillPoints >= 1)
+        if (Data.S.skillPoints >= 1)
         {
-            //Data.S.hpBtn1Disabled = true;
+            Data.S.hpBtn1Disabled = true;
             hpBtn1.SetActive(false);
-            PlayerLife.S.skillPoints -= 1;
+            Data.S.skillPoints -= 1;
             //PlayerLife.S.SetText();
-            //Player.S.maxHealth += 1f;
+            PlayerLife.S.maxHealth += 1f;
+            PlayerLife.S.currentHealth += 1f;
         }
     }
 
     public void HpIncrease2()
     {
-        if (PlayerLife.S.skillPoints >= 1)
+        if (Data.S.skillPoints >= 1)
         {
-            //Data.S.hpBtn2Disabled = true;
+            Data.S.hpBtn2Disabled = true;
             hpBtn2.SetActive(false);
-            PlayerLife.S.skillPoints -= 1;
+            Data.S.skillPoints -= 1;
             //PlayerLife.S.SetText();
-            //Player.S.maxHealth += 1f;
+            PlayerLife.S.maxHealth += 1f;
+            PlayerLife.S.currentHealth += 1f;
         }
     }
 }

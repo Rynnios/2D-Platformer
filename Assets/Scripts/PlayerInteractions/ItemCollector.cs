@@ -52,8 +52,7 @@ public class ItemCollector : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Debug.Log("Skill Point Collected");
-            PlayerLife.S.skillPoints++;
-            //Data.S.skillpoints++;
+            Data.S.skillPoints++;
         }
     }
 
