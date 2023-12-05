@@ -5,18 +5,41 @@ using UnityEngine.UI;
 
 public class FinalBoss : MonoBehaviour
 {
-    public int health;
-    public int dmg;
-    private float timeBtwnDmg = 1.5f;
+    public Transform player;
+    public int bossHealth = 5;
+    private Animator anim;
 
-    public Animator redPanel;
-    public Animator camAnim;
+    public bool isFlipped = false;
 
-    public Slider bossHealthBar;
-
-    //
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Start()
     {
-        //if (other.CompareTag("Player"))
+        anim = GetComponent<Animator>();
     }
+
+    private void Update()
+    {
+        if (bossHealth <= 3)
+        {
+            anim.SetTrigger("turnEnraged");
+        }
+    }
+    public void LookAtPlayer()
+    {
+        Vector3 flipped = transform.localScale;
+        flipped.z *= -1f;
+
+        if (transform.position.x > player.position.x && isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = false;
+        }
+        else if (transform.position.x < player.position.x && !isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = true;
+        }
+    }
+
 }

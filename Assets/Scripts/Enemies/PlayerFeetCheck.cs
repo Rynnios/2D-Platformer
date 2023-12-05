@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class PlayerFeetCheck : MonoBehaviour
 {
-    private Animator animator;
+    public int bossHealth = 5;
 
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<EnemyHeadCheck>())
         {
-            enemyDeath();
+            if (GameObject.FindGameObjectWithTag("Boss"))
+            {
+                bossHealth -= 1;
+            }
+            else if (!GameObject.FindGameObjectWithTag("Boss") || bossHealth == 0)
+            {
+                killEnemy();
+            }
         }
     }
 
-    private void enemyDeath()
+    private void killEnemy()
     {
-        animator.SetTrigger("death");
         Destroy(transform.parent.gameObject);
     }
 }
