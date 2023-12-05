@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask jumpableGround;
 
     private float dirX = 0f;
-    public float moveSpeed = 7f;      //SerializeField hides from other scripts but allows you to modify values in unity
     [SerializeField] private float jumpStrength = 25f;
     private enum MovementState { idle, running, jumping, falling}   //idle has int value of 0
 
@@ -32,14 +31,13 @@ public class PlayerMovement : MonoBehaviour
         spriteRend = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
-        moveSpeed = Data.S.moveSpeed;
     }
 
     // Update is called once per frame
     private void Update()
     {
         dirX = Input.GetAxisRaw("Horizontal");        //GetAxisRaw makes it so value doesn't go to 0 immediately after releasing button
-        rb.velocity = new Vector2 (dirX * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2 (dirX * Data.S.moveSpeed, rb.velocity.y);
         
 
         if (Input.GetButtonDown("Jump") && OnGround() )
