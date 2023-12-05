@@ -16,8 +16,7 @@ public class Data : MonoBehaviour
     public int cooldownReducer = 0;
     public float moveSpeed = 7f;
     public float maxHealth = 3f;
-    //public float maxExp = 200f;
-    //public float currentExp = 0f;
+    public float currentHealth = 3f;
 
     //skill tree fields
     public bool speedBtn1Disabled = false;
