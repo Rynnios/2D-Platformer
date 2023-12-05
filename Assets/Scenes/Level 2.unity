@@ -74327,7 +74327,7 @@ PrefabInstance:
       objectReference: {fileID: 567032936}
     - target: {fileID: 8453876933219217439, guid: 13a904e96b4cd39468f0bf5470a9679f, type: 3}
       propertyPath: m_Name
-      value: Pause Menu Canvas
+      value: PauseMenuCanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

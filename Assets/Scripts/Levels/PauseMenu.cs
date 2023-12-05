@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenu;
     public GameObject skillTree;
+    public Finish timeHandlerScript;
 
     private void Start()
     {
@@ -18,7 +19,6 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
@@ -27,11 +27,12 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
-                Pause();
+                if (timeHandlerScript == null || !timeHandlerScript.gameFinished)
+                {
+                    Pause();
+                }
             }
-
         }
-
     }
 
     public void Pause()

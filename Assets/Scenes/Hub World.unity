@@ -757,6 +757,7 @@ MonoBehaviour:
   Finish: {fileID: 0}
   completedCherryReq: {fileID: 0}
   cherriesText: {fileID: 0}
+  skillPointsText: {fileID: 0}
 --- !u!95 &322426862
 Animator:
   serializedVersion: 5
@@ -24924,6 +24925,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1551938572144770925, guid: 716d09604712a054bb7e2f5388930cfd, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697811256582800573, guid: 716d09604712a054bb7e2f5388930cfd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697811256582800573, guid: 716d09604712a054bb7e2f5388930cfd, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1976862064963809600, guid: 716d09604712a054bb7e2f5388930cfd, type: 3}
