@@ -104,7 +104,7 @@ public class SkillTree : MonoBehaviour
             Data.S.skillPoints -= 1;
             skillPointsText.text = ": " + Data.S.skillPoints;
 
-            PlayerLife.Instance.AddHealth();
+            PlayerController.Instance.AddHealth();
         }
     }
 
@@ -117,7 +117,7 @@ public class SkillTree : MonoBehaviour
             Data.S.skillPoints -= 1;
             skillPointsText.text = ": " + Data.S.skillPoints;
 
-            PlayerLife.Instance.AddHealth();
+            PlayerController.Instance.AddHealth();
         }
     }
 }

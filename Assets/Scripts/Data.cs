@@ -6,7 +6,7 @@ public class Data : MonoBehaviour
 {
     static public Data S; //Singleton
 
-    //player fields
+    // player fields
     public int skillPoints = 0;
     //public int level = 1;
     //public int playerLevel = 1;
@@ -16,15 +16,20 @@ public class Data : MonoBehaviour
     public int cooldownReducer = 0;
     public float moveSpeed = 7f;
     public float maxHealth = 3f;
-    public float currentHealth = 3f;
+    //public float currentHealth = 3f;
 
-    //skill tree fields
+    // skill tree fields
     public bool speedBtn1Disabled = false;
     public bool speedBtn2Disabled = false;
     public bool hpBtn1Disabled = false;
     public bool hpBtn2Disabled = false;
     public bool cooldownBtn1Disabled = false;
     public bool cooldownBtn2Disabled = false;
+
+    // level times
+    public float level1Time = 0;
+    public float level2Time = 0;
+    public float bossTime = 0;
 
     private void Awake()
     {
