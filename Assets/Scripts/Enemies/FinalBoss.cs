@@ -6,23 +6,15 @@ using UnityEngine.UI;
 public class FinalBoss : MonoBehaviour
 {
     public Transform player;
-    public int bossHealth = 5;
-    private Animator anim;
+    private Animator animator;
 
     public bool isFlipped = false;
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if (bossHealth <= 3)
-        {
-            anim.SetTrigger("turnEnraged");
-        }
-    }
     public void LookAtPlayer()
     {
         Vector3 flipped = transform.localScale;

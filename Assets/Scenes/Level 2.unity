@@ -306,7 +306,7 @@ Transform:
   m_GameObject: {fileID: 20824921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.629051, y: 0.9814848, z: -10}
+  m_LocalPosition: {x: -27.013462, y: 0.97812307, z: -10}
   m_LocalScale: {x: 1, y: 2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -431,8 +431,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5cb1ce98e499f4eb3ac9968820b772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
   currentHealth: 0
+  maxHealth: 1
+  maxTotalHealth: 1
 --- !u!114 &149158274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50668,7 +50669,7 @@ GameObject:
   - component: {fileID: 1499495762}
   m_Layer: 0
   m_Name: EnemyHeadCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74298,13 +74299,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnailBoi
       objectReference: {fileID: 0}
+    - target: {fileID: 4050373771237575454, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_Size.x
+      value: 0.33761862
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050373771237575454, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_Size.y
+      value: 0.17331158
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050373771237575454, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.016629593
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050373771237575454, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.040368628
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133981216682542991, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_Size.x
+      value: 0.29837158
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133981216682542991, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0162317
+      objectReference: {fileID: 0}
     - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.44
+      value: -25.32
       objectReference: {fileID: 0}
     - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.42
+      value: 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
       propertyPath: m_LocalPosition.z
@@ -74338,7 +74363,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9200316529083862378, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+    - {fileID: 4050373771237575454, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

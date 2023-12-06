@@ -28,7 +28,7 @@ public class Boss_Enraged_Run : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<FinalBoss>().LookAtPlayer();  //Boss turns towards player
+        boss.LookAtPlayer();  //Boss turns towards player
 
         Vector2 target = new Vector2(player.position.x, rb.position.y); //Find target position to move to, since vertical (y-axis) is not needed, just keep it at bosses current y-axis
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);  //Move boss from current position to target position at a certain speed
