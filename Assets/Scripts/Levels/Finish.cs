@@ -17,6 +17,7 @@ public class Finish : MonoBehaviour
     private void Start()
     {
         startTime = Time.time;
+        endTime = Time.time;
     }
 
     private void Update()
@@ -62,8 +63,8 @@ public class Finish : MonoBehaviour
             timerText.color = Color.yellow;
             finishSound.Play();
 
-            // Check high score to determine what screen of menu player should be sent back to
-            if (IsHighScore(endTime))
+            // High score handling - do this after completing boss, tally up all three times from data
+            /*if (IsHighScore(endTime))
             {
                 PlayerPrefs.SetInt("ShowNameEntry", 1);
                 PlayerPrefs.SetInt("ShowLeaderboard", 0);
@@ -72,13 +73,34 @@ public class Finish : MonoBehaviour
             {
                 PlayerPrefs.SetInt("ShowNameEntry", 0);
                 PlayerPrefs.SetInt("ShowLeaderboard", 1);
-            }
+            }*/
 
-            // Save end time
-            PlayerPrefs.SetFloat("EndTime", endTime);
+            // Save end time (based on scene name)
+            // PlayerPrefs.SetFloat("EndTime", endTime);
+            string sceneName = SceneManager.GetActiveScene().name;
+            SaveTimeForLevel(sceneName, endTime);
 
             Invoke(nameof(CompleteLevel), 2f);
         }
+    }
+
+    private void SaveTimeForLevel(string levelName, float time)
+    {
+        switch (levelName)
+        {
+            case "Level1":
+                Data.S.level1Time = time;
+                break;
+            case "Level2":
+                Data.S.level2Time = time;
+                break;
+            case "BossLevel":
+                Data.S.bossTime = time;
+                break;
+        }
+
+        // How this would be saved to playerprefs:
+        // PlayerPrefs.SetFloat(levelName + "Time", time);
     }
 
     // Go to next scene when completing level - replace this with "next level" or "go to hub"

@@ -24,6 +24,9 @@ public class ItemCollector : MonoBehaviour
 
     private void Start()
     {
+        // Count the number of cherry objects in the scene
+        targetCherries = GameObject.FindGameObjectsWithTag("Cherry").Length;
+
         // Initialize text fields
         if (cherriesText != null)
             cherriesText.text = ": " + currentCherries + "/" + targetCherries;

@@ -11,23 +11,20 @@ public class EnterLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Level1>())
+        if (collision.gameObject.name == "Level1")
         {
-            sceneToLoad = "Level 1";
+            sceneToLoad = "Level1";
             SceneManager.LoadScene(sceneToLoad);
         }
-        else if (collision.GetComponent<Level2>())
+        else if (collision.gameObject.name == "Level2")
         {
-            sceneToLoad = "Level 2";
+            sceneToLoad = "Level2";
             SceneManager.LoadScene(sceneToLoad);
-
         }
-        else if (collision.GetComponent<Level3>())
+        else if (collision.gameObject.name == "Level3")
         {
             sceneToLoad = "Boss Level";
-
             SceneManager.LoadScene(sceneToLoad);
-
         }
     }
 }
