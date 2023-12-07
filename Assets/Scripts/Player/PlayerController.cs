@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public delegate void OnHealthChangedDelegate();
     public OnHealthChangedDelegate onHealthChangedCallback;
 
+
     private enum MovementState { idle, running, jumping, falling }   // idle has int value of 0
     static public PlayerController Instance { get; private set; } // Use private set for singleton
 
@@ -53,6 +54,8 @@ public class PlayerController : MonoBehaviour
         maxHealth = Data.S.maxHealth;
         currentHealth = maxHealth;
         onHealthChangedCallback?.Invoke(); // Force health bar update
+
+        Physics.IgnoreLayerCollision(0,8);
     }
 
     private void Update()

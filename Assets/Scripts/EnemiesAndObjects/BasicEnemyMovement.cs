@@ -10,7 +10,7 @@ public class BasicEnemyMovement : MonoBehaviour
     [SerializeField] private GameObject[] waypoints;
     private int currentWaypointIndex = 0;
 
-    //speed that platform moves
+    //speed the moving platform goes
     [SerializeField] private float Speed = 2f;
 
     private void Start()

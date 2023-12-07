@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class PlayerFeetCheck : MonoBehaviour
 {
-    private Animator animator;
+    [SerializeField] SkullBoss skullBoss;
+
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<EnemyHeadCheck>())
-        {
-            enemyDeath();
-        }
+        skullBoss = GameObject.FindGameObjectWithTag("Boss").GetComponent<SkullBoss>();
+
     }
 
-    private void enemyDeath()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        animator.SetTrigger("death");
-        Destroy(transform.parent.gameObject);
+        //Kills normal enemies in 1 shot
+        //If facing the boss, will reduce health of boss until 0, and then defeats the boss enemy
+        if (collision.GetComponent<EnemyHeadCheck>())
+        {
+            skullBoss.bossHealthTracker();
+            skullBoss.checkBossEnraged();
+        }
     }
 }
