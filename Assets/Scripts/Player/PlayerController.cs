@@ -10,16 +10,15 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     [SerializeField] private LayerMask jumpableGround;
-    private float knockbackStrengthX = 8f; // Horizontal knockback strength
-    private float knockbackStrengthY = 10f; // Vertical knockback strength
 
     private float dirX = 0f;
-    [SerializeField] private float jumpStrength = 15f;
     public float currentHealth = 3;
     public float maxHealth = 3;
     public float maxTotalHealth = 5;
     public bool isInvincible;
     private bool isControlEnabled = true;
+    private bool canDoubleJump = false;
+    private bool doubleJumpUsed = false;
 
     public AudioSource deathSound;
     public AudioSource damageSound;
@@ -63,56 +62,83 @@ public class PlayerController : MonoBehaviour
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * Data.S.moveSpeed, rb.velocity.y);
 
-        if (Input.GetButtonDown("Jump") && OnGround())
+        if (Input.GetButtonDown("Jump"))
         {
-            rb.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
-            jumpSound.Play();
+            if (OnGround())
+            {
+                Jump();
+                canDoubleJump = Data.S.doubleJumpEnabled; // Allow double jump if it's enabled (SMART!!!)
+            }
+            else if (canDoubleJump && !doubleJumpUsed)
+            {
+                DoubleJump();
+            }
         }
 
         UpdateAnimationState();
     }
 
+    private void Jump()
+    {
+        rb.AddForce(Vector2.up * Data.S.jumpPower, ForceMode2D.Impulse);
+        jumpSound.Play();
+    }
+
+    private void DoubleJump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0); // Reset y velocity
+        rb.AddForce(Vector2.up * 11f, ForceMode2D.Impulse);
+        jumpSound.Play();
+        animator.SetTrigger("doubleJump"); // Make sure to set up a "doubleJump" trigger in your Animator
+        doubleJumpUsed = true; // Prevent further jumps until landing
+    }
+
     private void UpdateAnimationState()
     {
+        // MovementState is an existing enum you have that defines the player's current movement status.
         MovementState state;
 
-        // Check if the player is on the ground
+        // Flip sprite based on horizontal movement
+        if (dirX > 0f)
+        {
+            spriteRend.flipX = false;
+        }
+        else if (dirX < -0f)
+        {
+            spriteRend.flipX = true;
+        }
+
+        // Check if the player is on the ground.
         if (OnGround())
         {
-            // Determine the movement state based on the horizontal movement
-            if (dirX > 0f)
+            // Reset the double jump flags when the player has landed.
+            canDoubleJump = Data.S.doubleJumpEnabled;
+            doubleJumpUsed = false;
+
+            // Determine the movement state based on the Rigidbody's horizontal velocity.
+            if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon) // Mathf.Epsilon is a very small number, effectively zero.
             {
                 state = MovementState.running;
-                spriteRend.flipX = false;
-            }
-            else if (dirX < 0f)
-            {
-                state = MovementState.running;
-                spriteRend.flipX = true;
             }
             else
             {
                 state = MovementState.idle;
             }
         }
-        else
+        else // If not on the ground
         {
-            // Determine the movement state based on the vertical movement
+            // Determine if the player is jumping or falling based on vertical velocity
             if (rb.velocity.y > 0.1f)
             {
                 state = MovementState.jumping;
             }
-            else if (rb.velocity.y < -0.2f)
+            else
             {
                 state = MovementState.falling;
             }
-            else
-            {
-                // Maintain the current horizontal movement state when in the air
-                state = (dirX != 0f) ? MovementState.running : MovementState.idle;
-            }
         }
 
+        // Set the animation state in the Animator.
         animator.SetInteger("state", (int)state);
     }
 
@@ -122,7 +148,11 @@ public class PlayerController : MonoBehaviour
         //0f is the rotation
         //Vector2.down by .1f moves box down slightly downwards
         //will return true or false depending if player is touching on the ground or not
-        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+
+        // Reduce the height of the box to cover only the lower half of the player
+        Vector2 size = new Vector2(boxCollider.bounds.size.x * 0.99f, boxCollider.bounds.size.y * 0.5f);
+
+        return Physics2D.BoxCast(boxCollider.bounds.center, size, 0f, Vector2.down, .5f, jumpableGround);
     }
 
     public void Heal(float health)
@@ -146,7 +176,7 @@ public class PlayerController : MonoBehaviour
                 Vector2 knockbackDirection = transform.position.x > enemyPosition.x ? Vector2.right : Vector2.left;
 
                 // Set the player's velocity to a specific value for consistent knockback
-                rb.velocity = new Vector2(knockbackDirection.x * knockbackStrengthX, knockbackStrengthY);
+                rb.velocity = new Vector2(knockbackDirection.x * Data.S.knockbackStrengthX, Data.S.knockbackStrengthY);
 
                 // Disable player control temporarily
                 isControlEnabled = false;
@@ -181,7 +211,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Enemy") && !isInvincible)
+        if (collider.gameObject.CompareTag("Enemy") && !isInvincible && isControlEnabled && !Data.S.trueInvincibilityEnabled)
         {
             // Use the enemy's position directly for knockback calculation
             TakeDamage(1.0f, collider.transform.position);
@@ -190,7 +220,7 @@ public class PlayerController : MonoBehaviour
                 PlayerDies();
             }
         }
-        else if (collider.gameObject.CompareTag("Trap"))
+        else if (collider.gameObject.CompareTag("Trap") && !Data.S.trueInvincibilityEnabled)
         {
             currentHealth = 0;
             onHealthChangedCallback?.Invoke(); // Force health bar update
@@ -230,10 +260,9 @@ public class PlayerController : MonoBehaviour
     IEnumerator InvincibilityFrames()
     {
         isInvincible = true;
-        float invincibilityDuration = 2f; // Duration of invincibility in seconds
         float timer = 0f;
 
-        while (timer < invincibilityDuration)
+        while (timer < Data.S.invincibilityDuration)
         {
             // Oscillate alpha between 70 and 170 using a sine wave
             float alpha = (Mathf.Sin(timer * 10f) + 1f) * 0.5f; // This oscillates between 0 and 1

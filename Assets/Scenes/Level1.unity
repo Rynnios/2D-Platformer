@@ -9986,6 +9986,72 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a36c98297b08c24d9c5d0a4e4eed435, type: 3}
+--- !u!1001 &228408316
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 385499334}
+    m_Modifications:
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -87.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26.34765
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.2140004
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393760918012590134, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_Name
+      value: Pineapple3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017030536203051043, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ef5eb267d6ffa0429494b0f8506c53c, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+--- !u!4 &228408317 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+  m_PrefabInstance: {fileID: 228408316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &249423211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10175,6 +10241,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 985091062}
+  - {fileID: 1107964016}
+  - {fileID: 228408317}
   m_Father: {fileID: 192061792}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &433551597
@@ -10889,7 +10957,6 @@ MonoBehaviour:
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64
-  jumpStrength: 15
   currentHealth: 3
   maxHealth: 3
   maxTotalHealth: 5
@@ -11476,6 +11543,17 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 3747395050382546920, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
   m_PrefabInstance: {fileID: 891065481}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1070199230 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 17543041732117164, guid: 3b8adf2472430cf4d9d00841f022a3a7, type: 3}
+  m_PrefabInstance: {fileID: 9001640289870046968}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1093616682 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6130280485868258436, guid: 3b8adf2472430cf4d9d00841f022a3a7, type: 3}
@@ -11544,6 +11622,72 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a36c98297b08c24d9c5d0a4e4eed435, type: 3}
+--- !u!1001 &1107964015
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 385499334}
+    m_Modifications:
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -88.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26.34765
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.2140004
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393760918012590134, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_Name
+      value: Pineapple2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017030536203051043, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ef5eb267d6ffa0429494b0f8506c53c, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+--- !u!4 &1107964016 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 364339838228864055, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
+  m_PrefabInstance: {fileID: 1107964015}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1132181782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25773,6 +25917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finishSound: {fileID: 1268737101}
+  levelEndImage: {fileID: 1070199230}
   gameFinished: 0
   timerText: {fileID: 353793729}
 --- !u!1001 &1759126151
@@ -25997,12 +26142,12 @@ MonoBehaviour:
   cooldownReducer: 0
   moveSpeed: 7
   maxHealth: 3
-  speedBtn1Disabled: 0
-  speedBtn2Disabled: 0
-  hpBtn1Disabled: 0
-  hpBtn2Disabled: 0
-  cooldownBtn1Disabled: 0
-  cooldownBtn2Disabled: 0
+  jumpPower: 15
+  knockbackStrengthX: 8
+  knockbackStrengthY: 10
+  invincibilityDuration: 2
+  doubleJumpEnabled: 0
+  trueInvincibilityEnabled: 0
   level1Time: 0
   level2Time: 0
   bossTime: 0
@@ -26658,7 +26803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3393760918012590134, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
       propertyPath: m_Name
-      value: SkillPoint
+      value: Pineapple1
       objectReference: {fileID: 0}
     - target: {fileID: 7017030536203051043, guid: 4ad3a4b6d11803049991995e27eadb8b, type: 3}
       propertyPath: m_Controller
