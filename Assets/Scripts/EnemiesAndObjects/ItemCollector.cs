@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ItemCollector : MonoBehaviour
 {
     static public ItemCollector instance;
+    private EnterLevel enterLevelScript;
+
     public GameObject Finish;
 
     // Count cherries to know if you completed the level
@@ -38,6 +41,9 @@ public class ItemCollector : MonoBehaviour
         {
             Finish.GetComponent<BoxCollider2D>().enabled = false;
         }
+
+        // Enter level script
+        enterLevelScript = FindObjectOfType<EnterLevel>();
     }
 
     // Item collection handler
@@ -55,13 +61,50 @@ public class ItemCollector : MonoBehaviour
         }
 
         // Collect skill point (pineapple)
-        else if(collision.gameObject.CompareTag("SkillPoint"))
+        else if (collision.gameObject.CompareTag("SkillPoint"))
         {
+            string pineappleID = SceneManager.GetActiveScene().name + "_" + collision.gameObject.name;
+
             Destroy(collision.gameObject);
             getSkillPoint.Play();
-            Data.S.skillPoints++;
 
-            skillPointsText.text = ": " + Data.S.skillPoints; 
+            // Check if this pineapple has already been collected
+            if (!Data.S.collectedPineapples[pineappleID])
+            {
+                Data.S.skillPoints++;
+                Data.S.collectedPineapples[pineappleID] = true;
+                skillPointsText.text = ": " + Data.S.skillPoints;
+
+                // Update HubWorldInfo display if in HubWorld
+                if (SceneManager.GetActiveScene().name == "HubWorld")
+                {
+                    UpdateHubWorldPineappleDisplay(collision.gameObject.name);
+                }
+            }
+        }
+    }
+
+    // Updates pineapples live in hub
+    private void UpdateHubWorldPineappleDisplay(string pineappleName)
+    {
+        GameObject levelInfoObject = GameObject.Find("HubWorldInfo");
+        if (levelInfoObject != null)
+        {
+            GameObject pineappleSprite = levelInfoObject.transform.Find(pineappleName).gameObject;
+            if (pineappleSprite != null)
+            {
+                SpriteRenderer sr = pineappleSprite.GetComponent<SpriteRenderer>();
+                if (sr != null)
+                {
+                    sr.color = new Color(1f, 1f, 1f, 1f); // Full opacity for collected pineapple
+                }
+            }
+
+            // Call UpdateTrophyDisplay method if enterLevelScript is not null
+            if (enterLevelScript != null)
+            {
+                enterLevelScript.UpdateTrophyDisplay("HubWorld", levelInfoObject);
+            }
         }
     }
 

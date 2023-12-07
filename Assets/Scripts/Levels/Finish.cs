@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Finish : MonoBehaviour
 {
     public AudioSource finishSound;
+    public Image levelEndImage; // Reference to the Image component of the LevelEnd object
 
     public bool gameFinished = false;
     private float startTime;
@@ -18,6 +20,7 @@ public class Finish : MonoBehaviour
     {
         startTime = Time.time;
         endTime = Time.time;
+        levelEndImage.color = new Color(levelEndImage.color.r, levelEndImage.color.g, levelEndImage.color.b, 0f); // Start fully transparent
     }
 
     private void Update()
@@ -77,10 +80,12 @@ public class Finish : MonoBehaviour
 
             // Save end time (based on scene name)
             // PlayerPrefs.SetFloat("EndTime", endTime);
-            string sceneName = SceneManager.GetActiveScene().name;
-            SaveTimeForLevel(sceneName, endTime);
 
-            Invoke(nameof(CompleteLevel), 2f);
+            // Start the coroutine to show the LevelEnd image and then load the HubWorld scene
+            SaveTimeForLevel(SceneManager.GetActiveScene().name, endTime);
+            Data.S.lastLevelPlayed = SceneManager.GetActiveScene().name;
+
+            StartCoroutine(CompleteLevelSequence());
         }
     }
 
@@ -103,9 +108,27 @@ public class Finish : MonoBehaviour
         // PlayerPrefs.SetFloat(levelName + "Time", time);
     }
 
-    // Go to next scene when completing level - replace this with "next level" or "go to hub"
-    private void CompleteLevel()
+    // New coroutine for the level completion sequence
+    private IEnumerator CompleteLevelSequence()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // Wait for 1.5 seconds
+        yield return new WaitForSeconds(1.5f);
+
+        // White screen fade
+        float fadeDuration = 0.5f;
+        Color startColor = levelEndImage.color;
+        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 1f); // Fully opaque
+        for (float t = 0; t < 1; t += Time.deltaTime / fadeDuration)
+        {
+            levelEndImage.color = Color.Lerp(startColor, endColor, t);
+            yield return null;
+        }
+        levelEndImage.color = endColor; // Ensure it's fully opaque
+
+        // Wait another 0.5 seconds
+        yield return new WaitForSeconds(0.5f);
+
+        // Load the HubWorld scene
+        SceneManager.LoadScene("HubWorld");
     }
 }
