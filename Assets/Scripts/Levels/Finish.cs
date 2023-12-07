@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Finish : MonoBehaviour
 {
     public AudioSource finishSound;
+    public Image levelEndImage; // Reference to the Image component of the LevelEnd object
 
     public bool gameFinished = false;
     private float startTime;
     private float endTime;
 
     public TextMeshProUGUI timerText;
+
+    private void Start()
+    {
+        startTime = Time.time;
+        endTime = Time.time;
+        levelEndImage.color = new Color(levelEndImage.color.r, levelEndImage.color.g, levelEndImage.color.b, 0f); // Start fully transparent
+    }
 
     private void Update()
     {
@@ -57,8 +66,8 @@ public class Finish : MonoBehaviour
             timerText.color = Color.yellow;
             finishSound.Play();
 
-            // Check high score to determine what screen of menu player should be sent back to
-            if (IsHighScore(endTime))
+            // High score handling - do this after completing boss, tally up all three times from data
+            /*if (IsHighScore(endTime))
             {
                 PlayerPrefs.SetInt("ShowNameEntry", 1);
                 PlayerPrefs.SetInt("ShowLeaderboard", 0);
@@ -67,18 +76,59 @@ public class Finish : MonoBehaviour
             {
                 PlayerPrefs.SetInt("ShowNameEntry", 0);
                 PlayerPrefs.SetInt("ShowLeaderboard", 1);
-            }
+            }*/
 
-            // Save end time
-            PlayerPrefs.SetFloat("EndTime", endTime);
+            // Save end time (based on scene name)
+            // PlayerPrefs.SetFloat("EndTime", endTime);
 
-            Invoke(nameof(CompleteLevel), 2f);
+            // Start the coroutine to show the LevelEnd image and then load the HubWorld scene
+            SaveTimeForLevel(SceneManager.GetActiveScene().name, endTime);
+            Data.S.lastLevelPlayed = SceneManager.GetActiveScene().name;
+
+            StartCoroutine(CompleteLevelSequence());
         }
     }
 
-    // Go to next scene when completing level - replace this with "next level" or "go to hub"
-    private void CompleteLevel()
+    private void SaveTimeForLevel(string levelName, float time)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        switch (levelName)
+        {
+            case "Level1":
+                Data.S.level1Time = time;
+                break;
+            case "Level2":
+                Data.S.level2Time = time;
+                break;
+            case "BossLevel":
+                Data.S.bossTime = time;
+                break;
+        }
+
+        // How this would be saved to playerprefs:
+        // PlayerPrefs.SetFloat(levelName + "Time", time);
+    }
+
+    // New coroutine for the level completion sequence
+    private IEnumerator CompleteLevelSequence()
+    {
+        // Wait for 1.5 seconds
+        yield return new WaitForSeconds(1.5f);
+
+        // White screen fade
+        float fadeDuration = 0.5f;
+        Color startColor = levelEndImage.color;
+        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 1f); // Fully opaque
+        for (float t = 0; t < 1; t += Time.deltaTime / fadeDuration)
+        {
+            levelEndImage.color = Color.Lerp(startColor, endColor, t);
+            yield return null;
+        }
+        levelEndImage.color = endColor; // Ensure it's fully opaque
+
+        // Wait another 0.5 seconds
+        yield return new WaitForSeconds(0.5f);
+
+        // Load the HubWorld scene
+        SceneManager.LoadScene("HubWorld");
     }
 }

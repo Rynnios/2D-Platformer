@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,7 +42,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         AudioListener.pause = true;
-        
     }
 
     public void Resume()
@@ -51,7 +51,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         AudioListener.pause = false;
-
     }
 
     public void RestartGame()
@@ -72,6 +71,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameIsPaused = false;
+        Data.S.lastLevelPlayed = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(1);
     }
 
