@@ -46,6 +46,8 @@ public class SkullBoss : MonoBehaviour
         attackMoveDirection.Normalize();
         bossRb = GetComponent<Rigidbody2D>();
         bossAnim = GetComponent<Animator>();
+
+        bossRb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     // Update is called once per frame
@@ -194,6 +196,8 @@ public class SkullBoss : MonoBehaviour
     public void StartFight()
     {
         bossAnim.SetTrigger("startFight");
+        bossRb.constraints = RigidbodyConstraints2D.None;
+        bossRb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void checkBossEnraged()
