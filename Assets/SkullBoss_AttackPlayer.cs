@@ -2,36 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss_Enraged_Jump : StateMachineBehaviour
+public class SkullBoss_AttackPlayer : StateMachineBehaviour
 {
-    public float minTime;
-    public float maxTime;
-    public float timer;
-
-    Transform playerPos;
-    public float speed;
-
+    [SerializeField] SkullBoss skullBoss;
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-
-        timer = Random.Range(minTime, maxTime);
+        skullBoss = GameObject.FindGameObjectWithTag("Boss").GetComponent<SkullBoss>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (timer <= 0)
-        {
-            animator.SetTrigger("enragedRun");
-        }
-        else
-        {
-            timer -= Time.deltaTime;
-        }
-
-        Vector2 target = new Vector2(playerPos.position.x, animator.transform.position.y);
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, target, speed * Time.deltaTime);
+        skullBoss.TargetAttack();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
