@@ -31,7 +31,7 @@ public class EnterLevel : MonoBehaviour
         }
         else if (collision.gameObject.name == "Level3")
         {
-            sceneToLoad = "Boss Level";
+            sceneToLoad = "BossLevel";
             SceneManager.LoadScene(sceneToLoad);
         }
     }
@@ -74,7 +74,7 @@ public class EnterLevel : MonoBehaviour
                 case "Level2":
                     time = Data.S.level2Time;
                     break;
-                case "Boss Level":
+                case "BossLevel":
                     time = Data.S.bossTime;
                     break;
             }

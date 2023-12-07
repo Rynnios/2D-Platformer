@@ -5,13 +5,19 @@ using UnityEngine;
 public class HubSpawnPosition : MonoBehaviour
 {
     public GameObject player;
+    private SpriteRenderer spriteRend;
+
     public Transform spawnPointLevel1;
     public Transform spawnPointLevel2;
+    public Transform spawnPointBossLevel;
 
-    void Start()
+    private void Awake()
     {
-        Transform spawnPoint;
+        spriteRend = GetComponent<SpriteRenderer>();
+    }
 
+    private void Start()
+    {
         switch (Data.S.lastLevelPlayed)
         {
             case "Level1":
@@ -20,6 +26,12 @@ public class HubSpawnPosition : MonoBehaviour
                 break;
             case "Level2":
                 player.transform.position = spawnPointLevel2.position;
+                spriteRend.flipX = true;
+                Data.S.lastLevelPlayed = "";
+                break;
+            case "BossLevel":
+                player.transform.position = spawnPointBossLevel.position;
+                spriteRend.flipX = true;
                 Data.S.lastLevelPlayed = "";
                 break;
         }
