@@ -3,38 +3,19 @@ using UnityEngine;
 public class PlayerFeetCheck : MonoBehaviour
 {
     public AudioSource enemyKillSound;
+    private SkullBoss skullBoss;
 
-    public void DefeatEnemy()
+    public void Start()
     {
-        GameObject enemy = transform.parent.gameObject;
-        enemyKillSound.Play();
-
-        // Check for and disable BasicEnemyMovement script
-        BasicEnemyMovement enemyMovement = enemy.GetComponent<BasicEnemyMovement>();
-        if (enemyMovement != null)
+        GameObject bossObject = GameObject.FindGameObjectWithTag("Boss");
+        if (bossObject != null)
         {
-            enemyMovement.enabled = false;
+            skullBoss = bossObject.GetComponent<SkullBoss>();
         }
+    }
 
-        // Remove PlatformEffector2D and BoxCollider2D components if they exist
-        var platformEffector = enemy.GetComponent<PlatformEffector2D>();
-        if (platformEffector != null)
-        {
-            Destroy(platformEffector);
-        }
-
-        var boxCollider = enemy.GetComponent<BoxCollider2D>();
-        if (boxCollider != null)
-        {
-            Destroy(boxCollider);
-        }
-
-        // Clear all children
-        foreach (Transform child in enemy.transform)
-        {
-            Destroy(child.gameObject);
-        }
-
+    public void Die(GameObject enemy)
+    {
         // Flip sprite upside down and bring forward
         SpriteRenderer spriteRenderer = enemy.GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
@@ -58,6 +39,83 @@ public class PlayerFeetCheck : MonoBehaviour
 
         // Destroy the GameObject after 3 seconds
         Destroy(enemy, 3f);
+    }
+
+    public void DefeatEnemy()
+    {
+        GameObject enemy = transform.parent.gameObject;
+        enemyKillSound.Play();
+
+        // Damage the boss if there's a boss
+        if (skullBoss)
+        {
+            skullBoss.bossHealth--;
+            if (skullBoss.bossHealth > 0)
+            {
+                skullBoss.FlashDamageEffect(); // Call the flash effect method
+                skullBoss.checkBossEnraged();
+            }
+            else
+            {
+                Destroy(skullBoss);
+
+                Rigidbody2D bossRb = enemy.GetComponent<Rigidbody2D>();
+                if (bossRb != null)
+                {
+                    bossRb.velocity = Vector2.zero; // Stop any ongoing movement
+                }
+
+                var bossAnimator = enemy.GetComponent<Animator>();
+                if (bossAnimator != null)
+                {
+                    Destroy(bossAnimator);
+                }
+
+                var bossCollider = enemy.GetComponent<CapsuleCollider2D>();
+                if (bossCollider != null)
+                {
+                    Destroy(bossCollider);
+                }
+
+                // Clear all children
+                foreach (Transform child in enemy.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+
+                Die(GameObject.FindGameObjectWithTag("Boss"));
+            }
+        }
+        else
+        {
+            // Check for and disable BasicEnemyMovement script
+            BasicEnemyMovement enemyMovement = enemy.GetComponent<BasicEnemyMovement>();
+            if (enemyMovement != null)
+            {
+                enemyMovement.enabled = false;
+            }
+
+            // Remove PlatformEffector2D and BoxCollider2D components if they exist
+            var platformEffector = enemy.GetComponent<PlatformEffector2D>();
+            if (platformEffector != null)
+            {
+                Destroy(platformEffector);
+            }
+
+            var boxCollider = enemy.GetComponent<BoxCollider2D>();
+            if (boxCollider != null)
+            {
+                Destroy(boxCollider);
+            }
+
+            // Clear all children
+            foreach (Transform child in enemy.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            Die(enemy);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -601,6 +601,7 @@ MonoBehaviour:
   maxHealth: 3
   maxTotalHealth: 8
   isInvincible: 0
+  isControlEnabled: 1
   deathSound: {fileID: 887600656}
   damageSound: {fileID: 271211446}
   jumpSound: {fileID: 2065311478}
@@ -50521,6 +50522,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRb: {fileID: 149158278}
+  playerController: {fileID: 149158280}
+  upForce: 600
+  sideForce: 0
 --- !u!1001 &1505578071
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -34,10 +34,11 @@ public class SkullBoss : MonoBehaviour
     private bool facingLeft = true;
 
     public int bossHealth = 5;
-    public Collider2D collision;
 
     private Rigidbody2D bossRb;
     private Animator bossAnim;
+    private SpriteRenderer spriteRenderer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,7 @@ public class SkullBoss : MonoBehaviour
         attackMoveDirection.Normalize();
         bossRb = GetComponent<Rigidbody2D>();
         bossAnim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         bossRb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
@@ -56,8 +58,6 @@ public class SkullBoss : MonoBehaviour
         isTouchingUp = Physics2D.OverlapCircle(WallUpCheck.position, wallCheckRadius, wallLayer);
         isTouchingDown = Physics2D.OverlapCircle(WallDownCheck.position, wallCheckRadius, wallLayer);
         isTouchingSide = Physics2D.OverlapCircle(WallSideCheck.position, wallCheckRadius, wallLayer);
-
-
     }
 
     public void randomStatePicker()
@@ -90,14 +90,7 @@ public class SkullBoss : MonoBehaviour
 
         if (isTouchingSide)
         {
-            if (facingLeft)
-            {
-                Flip();
-            }
-            else if (!facingLeft)
-            {
-                Flip();
-            }
+            Flip();
         }
         bossRb.velocity = idleMoveSpeed * idleMoveDirection;
 
@@ -184,6 +177,28 @@ public class SkullBoss : MonoBehaviour
         attackMoveDirection.y *= -1;
     }
 
+    // Call this method to start the flash effect
+    public void FlashDamageEffect()
+    {
+        StartCoroutine(DamageFlashCoroutine());
+    }
+
+    private IEnumerator DamageFlashCoroutine()
+    {
+        float flashDuration = 1.0f; // Total duration of the flash
+        float flashInterval = 0.06f; // Time interval between flashes
+
+        for (float timer = 0; timer < flashDuration; timer += flashInterval)
+        {
+            // Alternate between red and white color
+            spriteRenderer.color = spriteRenderer.color == Color.white ? Color.red : Color.white;
+            yield return new WaitForSeconds(flashInterval);
+        }
+
+        // Restore the original color (assuming it's white)
+        spriteRenderer.color = Color.white;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
@@ -205,11 +220,10 @@ public class SkullBoss : MonoBehaviour
         if (bossHealth <= 3)
         {
             bossAnim.SetTrigger("enraged");
-            Debug.Log("Boss health is now 4!");
         }
     }
 
-    public void bossHealthTracker()
+    /*public void bossHealthTracker()
     {
         if (bossHealth != 0)
         {
@@ -219,5 +233,5 @@ public class SkullBoss : MonoBehaviour
         {
             Destroy(transform.parent.gameObject);
         }
-    }
+    }*/
 }

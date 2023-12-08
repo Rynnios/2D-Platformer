@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public float maxHealth = 3;
     public float maxTotalHealth = 8;
     public bool isInvincible;
-    private bool isControlEnabled = true;
+    public bool isControlEnabled = true;
     private bool canDoubleJump = false;
     private bool doubleJumpUsed = false;
 
@@ -191,6 +191,36 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public void TakeDamageWithImmediateIFrames(float dmg, Vector2 enemyPosition)
+    {
+        if (!isInvincible)
+        {
+            StartCoroutine(InvincibilityFrames(3.5f));
+            damageSound.Play();
+            currentHealth -= dmg;
+            ClampHealth();
+
+            // Knockback if not dead
+            if (currentHealth > 0)
+            {
+                // Determine knockback direction based on enemy position relative to player
+                Vector2 knockbackDirection = transform.position.x > enemyPosition.x ? Vector2.right : Vector2.left;
+
+                // Set the player's velocity to a specific value for consistent knockback
+                rb.velocity = new Vector2(knockbackDirection.x * Data.S.knockbackStrengthX, Data.S.knockbackStrengthY);
+
+                // Disable player control temporarily
+                isControlEnabled = false;
+
+                animator.SetTrigger("hurt");
+
+                // Start coroutine to enable control after landing
+                StartCoroutine(WaitForLandingNoIFrames());
+            }
+        }
+    }
+
     public void AddHealth()
     {
         if (maxHealth < maxTotalHealth)
@@ -216,6 +246,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Enemy") && !isInvincible && isControlEnabled)
         {
+            // Kill enemy if true invincible
             if (Data.S.trueInvincibilityEnabled)
             {
                 PlayerFeetCheck feetCheck = collider.GetComponentInChildren<PlayerFeetCheck>();
@@ -240,6 +271,15 @@ public class PlayerController : MonoBehaviour
             currentHealth = 0;
             onHealthChangedCallback?.Invoke(); // Force health bar update
             PlayerDies();
+        }
+        else if (collider.gameObject.CompareTag("Boss"))
+        {
+            // Use the enemy's position directly for knockback calculation
+            TakeDamageWithImmediateIFrames(1.0f, collider.transform.position);
+            if (currentHealth <= 0)
+            {
+                PlayerDies();
+            }
         }
     }
 
@@ -269,15 +309,28 @@ public class PlayerController : MonoBehaviour
 
         // Re-enable player control and start invincibility frames
         isControlEnabled = true;
-        StartCoroutine(InvincibilityFrames());
+        StartCoroutine(InvincibilityFrames(Data.S.invincibilityDuration));
     }
 
-    IEnumerator InvincibilityFrames()
+    IEnumerator WaitForLandingNoIFrames()
+    {
+        yield return new WaitUntil(() => !OnGround());
+        yield return new WaitUntil(() => OnGround());
+
+        // Reset hurt animation trigger
+        animator.ResetTrigger("hurt");
+        animator.SetInteger("state", (int)MovementState.idle);
+
+        // Re-enable player control and start invincibility frames
+        isControlEnabled = true;
+    }
+
+    IEnumerator InvincibilityFrames(float duration)
     {
         isInvincible = true;
         float timer = 0f;
 
-        while (timer < Data.S.invincibilityDuration)
+        while (timer < duration)
         {
             // Oscillate alpha between 70 and 170 using a sine wave
             float alpha = (Mathf.Sin(timer * 10f) + 1f) * 0.5f; // This oscillates between 0 and 1
