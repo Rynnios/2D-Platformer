@@ -13,7 +13,7 @@ public class ItemCollector : MonoBehaviour
     public GameObject Finish;
 
     // Count cherries to know if you completed the level
-    private int targetCherries = 5; // Maybe this can be set with a param for each level later
+    private int targetCherries; // Maybe this can be set with a param for each level later
     private int currentCherries = 0;
 
     // Item sounds
@@ -24,6 +24,7 @@ public class ItemCollector : MonoBehaviour
     // Text fields
     [SerializeField] private TMP_Text cherriesText;
     [SerializeField] private TMP_Text skillPointsText;
+    [SerializeField] private GameObject cherriesContainer;
 
     private void Start()
     {
@@ -50,15 +51,28 @@ public class ItemCollector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Collect cherry
-        if (collision.gameObject.CompareTag("Cherry"))
+        if (collision.transform.CompareTag("Cherry"))
         {
             Destroy(collision.gameObject);
             getCherry.Play();
-            currentCherries++;
+
+            // Recalculate the number of cherries left
+            if (cherriesContainer != null)
+            {
+                // Count only the cherries that are children of the cherriesContainer
+                currentCherries = targetCherries - (cherriesContainer.transform.childCount - 1);
+            }
+            else
+            {
+                // Count all cherries in the scene
+                currentCherries = GameObject.FindGameObjectsWithTag("Cherry").Length;
+            }
+
             cherriesText.text = ": " + currentCherries + "/" + targetCherries;
 
             AllCherriesCollected();
         }
+
 
         // Collect skill point (pineapple)
         else if (collision.gameObject.CompareTag("SkillPoint"))

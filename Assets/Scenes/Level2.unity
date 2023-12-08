@@ -306,7 +306,7 @@ Transform:
   m_GameObject: {fileID: 20824921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.765926, y: 0.95687044, z: -10}
+  m_LocalPosition: {x: -35.7659, y: 0.9309696, z: -10}
   m_LocalScale: {x: 1, y: 2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -436,6 +436,7 @@ MonoBehaviour:
   completedCherryReq: {fileID: 1551966070}
   cherriesText: {fileID: 1617117326}
   skillPointsText: {fileID: 1617117325}
+  cherriesContainer: {fileID: 1851977236}
 --- !u!95 &149158275
 Animator:
   serializedVersion: 5
@@ -679,10 +680,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -34.992252, y: -12.66903}
-      - {x: -35.22909, y: 14.155542}
-      - {x: 32.924427, y: 14.165129}
-      - {x: 32.937164, y: -12.483465}
+    - - {x: -34.992252, y: -20.364063}
+      - {x: -35.097553, y: 19.03893}
+      - {x: 33.459473, y: 19.152563}
+      - {x: 33.472214, y: -19.878626}
   m_UseDelaunayMesh: 0
 --- !u!1 &166748277
 GameObject:
