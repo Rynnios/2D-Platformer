@@ -772,6 +772,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
+=======
+--- !u!82 &224095537 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5979022233091157889, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 271211445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &224377769
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 337372293}
+    m_Modifications:
+    - target: {fileID: 163431279418771775, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: enemyKillSound
+      value: 
+      objectReference: {fileID: 1398490549}
+    - target: {fileID: 2797995630123400725, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120068029381200086, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_Name
+      value: SnailBoi (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 27.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8560405698560182906, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.88
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+--- !u!4 &224377770 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
+  m_PrefabInstance: {fileID: 224377769}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!1001 &225312370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -933,7 +1015,11 @@ AudioSource:
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &271211447 stripped
 AudioSource:
+<<<<<<< Updated upstream
   m_CorrespondingSourceObject: {fileID: 1556705792422710005, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+=======
+  m_CorrespondingSourceObject: {fileID: 7028592632389161135, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+>>>>>>> Stashed changes
   m_PrefabInstance: {fileID: 271211445}
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &271211448 stripped
@@ -946,7 +1032,16 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 2013912003874364403, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
   m_PrefabInstance: {fileID: 271211445}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &281299763
+=======
+--- !u!82 &271211450 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4647569944463308016, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 271211445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &297363025
+>>>>>>> Stashed changes
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -49693,6 +49788,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finishSound: {fileID: 271211449}
+  endSound1: {fileID: 271211450}
+  endSound2: {fileID: 271211447}
+  BGM: {fileID: 224095537}
   levelEndImage: {fileID: 1617117327}
   gameFinished: 0
   timerText: {fileID: 1318390521}
