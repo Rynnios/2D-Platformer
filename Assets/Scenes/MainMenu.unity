@@ -1269,12 +1269,13 @@ MonoBehaviour:
   cooldownReducer: 0
   moveSpeed: 7
   maxHealth: 3
-  speedBtn1Disabled: 0
-  speedBtn2Disabled: 0
-  hpBtn1Disabled: 0
-  hpBtn2Disabled: 0
-  cooldownBtn1Disabled: 0
-  cooldownBtn2Disabled: 0
+  jumpPower: 15
+  knockbackStrengthX: 8
+  knockbackStrengthY: 10
+  invincibilityDuration: 2
+  doubleJumpEnabled: 0
+  trueInvincibilityEnabled: 0
+  lastLevelPlayed: 
   level1Time: 0
   level2Time: 0
   bossTime: 0
@@ -8289,12 +8290,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time
-
-'
+  m_text: Total Time
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 08b36e6878b48c14cb2c436716c0ed69, type: 2}
+  m_sharedMaterial: {fileID: 8190137244214498410, guid: 08b36e6878b48c14cb2c436716c0ed69, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8318,8 +8317,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8850,8 +8849,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 08b36e6878b48c14cb2c436716c0ed69, type: 2}
+  m_sharedMaterial: {fileID: 8190137244214498410, guid: 08b36e6878b48c14cb2c436716c0ed69, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8875,8 +8874,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
