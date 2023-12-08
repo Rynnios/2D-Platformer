@@ -598,7 +598,7 @@ MonoBehaviour:
     m_Bits: 64
   currentHealth: 3
   maxHealth: 3
-  maxTotalHealth: 5
+  maxTotalHealth: 8
   isInvincible: 0
   deathSound: {fileID: 887600656}
   damageSound: {fileID: 271211446}
@@ -834,37 +834,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8253931093982000970, guid: cadd68bdb43c62d45b511953fa5da21c, type: 3}
   m_PrefabInstance: {fileID: 225312370}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &268731644 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3120068029381200086, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
-  m_PrefabInstance: {fileID: 6714964905593194764}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &268731645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
   m_PrefabInstance: {fileID: 6714964905593194764}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &268731646
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268731644}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ea547d306a52fa498f4d7383cc70c10, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &271211445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -929,11 +903,6 @@ PrefabInstance:
 --- !u!82 &271211446 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3747395050382546920, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
-  m_PrefabInstance: {fileID: 271211445}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &271211447 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1556705792422710005, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
   m_PrefabInstance: {fileID: 271211445}
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &271211448 stripped
@@ -49488,7 +49457,7 @@ PrefabInstance:
     - target: {fileID: 936908252215145256, guid: 716d09604712a054bb7e2f5388930cfd, type: 3}
       propertyPath: warningSound
       value: 
-      objectReference: {fileID: 271211447}
+      objectReference: {fileID: 0}
     - target: {fileID: 936908252215145256, guid: 716d09604712a054bb7e2f5388930cfd, type: 3}
       propertyPath: skillPointsText
       value: 
@@ -50389,6 +50358,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1609353102906613116, guid: 9a36c98297b08c24d9c5d0a4e4eed435, type: 3}
   m_PrefabInstance: {fileID: 1389173720}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1398490549 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7139223724477625155, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 271211445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1450939258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50966,6 +50940,7 @@ MonoBehaviour:
   invincibilityDuration: 2
   doubleJumpEnabled: 0
   trueInvincibilityEnabled: 0
+  lastLevelPlayed: 
   level1Time: 0
   level2Time: 0
   bossTime: 0
@@ -74015,24 +73990,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 337372293}
     m_Modifications:
     - target: {fileID: 163431279418771775, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
-      propertyPath: enemyRb
+      propertyPath: enemyKillSound
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2797995630123400725, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1398490549}
     - target: {fileID: 3120068029381200086, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
       propertyPath: m_Name
       value: SnailBoi
       objectReference: {fileID: 0}
     - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.63
+      value: -26.58
       objectReference: {fileID: 0}
     - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.01
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 6482493285053338583, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
       propertyPath: m_LocalPosition.z
@@ -74069,10 +74040,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3120068029381200086, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 268731646}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7201213ae4172b14796b07ad73b51405, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

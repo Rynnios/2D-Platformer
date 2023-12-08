@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private float dirX = 0f;
     public float currentHealth = 3;
     public float maxHealth = 3;
-    public float maxTotalHealth = 5;
+    public float maxTotalHealth = 8;
     public bool isInvincible;
     private bool isControlEnabled = true;
     private bool canDoubleJump = false;
@@ -214,13 +214,25 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Enemy") && !isInvincible && isControlEnabled && !Data.S.trueInvincibilityEnabled)
+        if (collider.gameObject.CompareTag("Enemy") && !isInvincible && isControlEnabled)
         {
-            // Use the enemy's position directly for knockback calculation
-            TakeDamage(1.0f, collider.transform.position);
-            if (currentHealth <= 0)
+            if (Data.S.trueInvincibilityEnabled)
             {
-                PlayerDies();
+                PlayerFeetCheck feetCheck = collider.GetComponentInChildren<PlayerFeetCheck>();
+
+                if (feetCheck != null)
+                {
+                    feetCheck.DefeatEnemy();
+                }
+            }
+            else
+            {
+                // Use the enemy's position directly for knockback calculation
+                TakeDamage(1.0f, collider.transform.position);
+                if (currentHealth <= 0)
+                {
+                    PlayerDies();
+                }
             }
         }
         else if (collider.gameObject.CompareTag("Trap") && !Data.S.trueInvincibilityEnabled)

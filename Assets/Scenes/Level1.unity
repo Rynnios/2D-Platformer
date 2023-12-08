@@ -10245,6 +10245,97 @@ Transform:
   - {fileID: 228408317}
   m_Father: {fileID: 192061792}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &404212279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 404212280}
+  - component: {fileID: 404212282}
+  - component: {fileID: 404212281}
+  m_Layer: 0
+  m_Name: EnemyHeadCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &404212280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404212279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 599106386}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &404212281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404212279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87c20e71eabc514b949975323498462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRb: {fileID: 599106388}
+--- !u!61 &404212282
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404212279}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0057144165, y: -0.937137}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8514328, y: 0.10857701}
+  m_EdgeRadius: 0
 --- !u!1001 &433551597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10828,7 +10919,8 @@ Transform:
   m_LocalPosition: {x: -40.3, y: -1.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 404212280}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &599106387
@@ -10959,7 +11051,7 @@ MonoBehaviour:
     m_Bits: 64
   currentHealth: 3
   maxHealth: 3
-  maxTotalHealth: 5
+  maxTotalHealth: 8
   isInvincible: 0
   deathSound: {fileID: 891065486}
   damageSound: {fileID: 1061040582}
@@ -11165,6 +11257,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3741519262710811776, guid: a0abcebec9d0f344b870b82ff48f8431, type: 3}
   m_PrefabInstance: {fileID: 5942512882403586055}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &841675736 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7139223724477625155, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 891065481}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &849111643 stripped
 Transform:
@@ -12099,7 +12196,7 @@ PrefabInstance:
     - target: {fileID: 936908252215145256, guid: 716d09604712a054bb7e2f5388930cfd, type: 3}
       propertyPath: warningSound
       value: 
-      objectReference: {fileID: 1565001212}
+      objectReference: {fileID: 0}
     - target: {fileID: 936908252215145256, guid: 716d09604712a054bb7e2f5388930cfd, type: 3}
       propertyPath: skillPointsText
       value: 
@@ -25564,11 +25661,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3661938090976672066, guid: 2738f7ae0c25b5041b5dfd252ec0905c, type: 3}
   m_PrefabInstance: {fileID: 2061091332}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1565001212 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1556705792422710005, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
-  m_PrefabInstance: {fileID: 891065481}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1579388068 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1609353102906613116, guid: 9a36c98297b08c24d9c5d0a4e4eed435, type: 3}
@@ -26148,6 +26240,7 @@ MonoBehaviour:
   invincibilityDuration: 2
   doubleJumpEnabled: 0
   trueInvincibilityEnabled: 0
+  lastLevelPlayed: 
   level1Time: 0
   level2Time: 0
   bossTime: 0
@@ -26523,7 +26616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2653702188648689921, guid: d5a4187d79dd5374fa9982d69d11bcc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.93
+      value: 5.13
       objectReference: {fileID: 0}
     - target: {fileID: 2653702188648689921, guid: d5a4187d79dd5374fa9982d69d11bcc0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26561,6 +26654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockBoi3
       objectReference: {fileID: 0}
+    - target: {fileID: 5052042407842564050, guid: d5a4187d79dd5374fa9982d69d11bcc0, type: 3}
+      propertyPath: enemyKillSound
+      value: 
+      objectReference: {fileID: 841675736}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26704,13 +26801,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 219486328}
     m_Modifications:
+    - target: {fileID: 598023396321770723, guid: d70bef544fbb58d4cbfbdee1ab929555, type: 3}
+      propertyPath: enemyKillSound
+      value: 
+      objectReference: {fileID: 841675736}
+    - target: {fileID: 908431705529756573, guid: d70bef544fbb58d4cbfbdee1ab929555, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1539374463415737343, guid: d70bef544fbb58d4cbfbdee1ab929555, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.14
+      value: -35.71
       objectReference: {fileID: 0}
     - target: {fileID: 1539374463415737343, guid: d70bef544fbb58d4cbfbdee1ab929555, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.99
+      value: 5.45
       objectReference: {fileID: 0}
     - target: {fileID: 1539374463415737343, guid: d70bef544fbb58d4cbfbdee1ab929555, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26828,11 +26933,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9083767955398295205, guid: 35268b88300513d47a1630588e0ef1ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.44
+      value: -19.19
       objectReference: {fileID: 0}
     - target: {fileID: 9083767955398295205, guid: 35268b88300513d47a1630588e0ef1ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.91
+      value: -2.36
       objectReference: {fileID: 0}
     - target: {fileID: 9083767955398295205, guid: 35268b88300513d47a1630588e0ef1ba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26866,6 +26971,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9199120572934496140, guid: 35268b88300513d47a1630588e0ef1ba, type: 3}
+      propertyPath: enemyKillSound
+      value: 
+      objectReference: {fileID: 841675736}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

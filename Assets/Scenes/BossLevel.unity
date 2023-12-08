@@ -25733,11 +25733,12 @@ MonoBehaviour:
     m_Bits: 64
   currentHealth: 3
   maxHealth: 3
-  maxTotalHealth: 5
+  maxTotalHealth: 8
   isInvincible: 0
   deathSound: {fileID: 68440216}
   damageSound: {fileID: 68440214}
   jumpSound: {fileID: 68440215}
+  playerFeetCheck: {fileID: 0}
 --- !u!114 &681035842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26562,7 +26563,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1111897739}
-  - component: {fileID: 1111897740}
   - component: {fileID: 1111897741}
   - component: {fileID: 1111897743}
   - component: {fileID: 1111897742}
@@ -26589,18 +26589,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 990409913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1111897740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111897738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a4f06b616099a34d8c10f444254bb75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1111897741
 Animator:
   serializedVersion: 5
@@ -41009,7 +40997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02748315fc99dbc4db42878a436334a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skullBoss: {fileID: 505329859}
+  enemyKillSound: {fileID: 0}
 --- !u!1 &1980382422
 GameObject:
   m_ObjectHideFlags: 0

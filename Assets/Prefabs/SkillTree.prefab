@@ -2700,7 +2700,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ?????
+  m_text: 'True Invincibility
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b8f25454ee845c4888a84b9b7f157ef, type: 2}
   m_sharedMaterial: {fileID: -8812499155058385564, guid: 8b8f25454ee845c4888a84b9b7f157ef, type: 2}
