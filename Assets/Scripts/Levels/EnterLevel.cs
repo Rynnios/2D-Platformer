@@ -8,12 +8,44 @@ using static Cinemachine.DocumentationSortingAttribute;
 public class EnterLevel : MonoBehaviour
 {
     private string sceneToLoad;
+    public GameObject level3Object; // To lock before level 1 and 2 are completed
 
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "HubWorld")
         {
             UpdateLevelInfo();
+        }
+    }
+
+    private void CheckLevel3Accessibility()
+    {
+        if (Data.S.level1Time > 0 && Data.S.level2Time > 0)
+        {
+            // Make Level3 fully opaque and interactable
+            SetLevelAccessibility(level3Object, true);
+        }
+        else
+        {
+            // Make Level3 transparent and non-interactable
+            SetLevelAccessibility(level3Object, false);
+        }
+    }
+
+    private void SetLevelAccessibility(GameObject levelObject, bool accessible)
+    {
+        // Get the SpriteRenderer to change transparency
+        SpriteRenderer spriteRenderer = levelObject.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = accessible ? new Color(1f, 1f, 1f, 1f) : new Color(1f, 1f, 1f, 0.3f);
+        }
+
+        // Get the Collider to change interactability
+        Collider2D collider = levelObject.GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            collider.enabled = accessible;
         }
     }
 
@@ -38,6 +70,8 @@ public class EnterLevel : MonoBehaviour
 
     private void UpdateLevelInfo()
     {
+        CheckLevel3Accessibility();
+
         // Define level names and their corresponding GameObjects
         string[] levels = { "HubWorld", "Level1", "Level2", "BossLevel" };
         foreach (string level in levels)

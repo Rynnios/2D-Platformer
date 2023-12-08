@@ -1312,6 +1312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed7f8484bbc38d47815959bba9d0618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level3Object: {fileID: 167558893}
 --- !u!114 &322426868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1334,7 +1335,6 @@ MonoBehaviour:
   deathSound: {fileID: 1787733311}
   damageSound: {fileID: 370530539}
   jumpSound: {fileID: 1790078124}
-  playerFeetCheck: {fileID: 0}
 --- !u!114 &322426869
 MonoBehaviour:
   m_ObjectHideFlags: 0
