@@ -222,16 +222,4 @@ public class SkullBoss : MonoBehaviour
             bossAnim.SetTrigger("enraged");
         }
     }
-
-    /*public void bossHealthTracker()
-    {
-        if (bossHealth != 0)
-        {
-            bossHealth--;
-        }
-        else if (bossHealth == 0)
-        {
-            Destroy(transform.parent.gameObject);
-        }
-    }*/
 }
