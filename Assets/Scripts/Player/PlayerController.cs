@@ -101,12 +101,12 @@ public class PlayerController : MonoBehaviour
         // MovementState is an existing enum you have that defines the player's current movement status.
         MovementState state;
 
-        // Flip sprite based on horizontal movement
-        if (dirX > 0f)
+        // Flip sprite based on horizontal movement if game is running (timeScale = 1)
+        if (dirX > 0f && Time.timeScale == 1)
         {
             spriteRend.flipX = false;
         }
-        else if (dirX < -0f)
+        else if (dirX < -0f && Time.timeScale == 1)
         {
             spriteRend.flipX = true;
         }
