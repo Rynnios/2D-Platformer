@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 997013402}
   - component: {fileID: 997013401}
   m_Layer: 5
-  m_Name: WarningText (1)
+  m_Name: Subtitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8328,7 +8328,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ESC
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b8f25454ee845c4888a84b9b7f157ef, type: 2}
   m_sharedMaterial: {fileID: -8812499155058385564, guid: 8b8f25454ee845c4888a84b9b7f157ef, type: 2}
