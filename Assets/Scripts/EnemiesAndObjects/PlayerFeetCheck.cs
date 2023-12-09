@@ -22,6 +22,7 @@ public class PlayerFeetCheck : MonoBehaviour
         {
             spriteRenderer.flipY = true;
             spriteRenderer.sortingOrder += 1; // Increase sorting order to bring sprite forward
+            spriteRenderer.color = Color.white;
         }
 
         // Add Rigidbody2D if not present and apply settings
