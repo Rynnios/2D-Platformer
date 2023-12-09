@@ -57,12 +57,20 @@ public class PlayerFeetCheck : MonoBehaviour
             }
             else
             {
+                Finish finishScript = FindObjectOfType<Finish>(); // Find the Finish script in the scene
+                if (finishScript != null)
+                {
+                    finishScript.BossDefeated(); // Call the function for when the boss is defeated
+                }
+
+
                 Destroy(skullBoss);
 
                 Rigidbody2D bossRb = enemy.GetComponent<Rigidbody2D>();
                 if (bossRb != null)
                 {
                     bossRb.velocity = Vector2.zero; // Stop any ongoing movement
+                    bossRb.constraints = RigidbodyConstraints2D.FreezeRotation; // Unfreeze the boss's movement and position, but keep rotation frozen if needed
                 }
 
                 var bossAnimator = enemy.GetComponent<Animator>();

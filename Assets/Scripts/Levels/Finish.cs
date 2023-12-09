@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class Finish : MonoBehaviour
 {
     public AudioSource finishSound;
+    public AudioSource endSound1;
+    public AudioSource endSound2;
+    public AudioSource BGM;
     public Image levelEndImage; // Reference to the Image component of the LevelEnd object
 
     public bool gameFinished = false;
@@ -15,6 +18,7 @@ public class Finish : MonoBehaviour
     private float endTime;
 
     public TextMeshProUGUI timerText;
+    public Camera playerCamera;
 
     private void Start()
     {
@@ -66,21 +70,6 @@ public class Finish : MonoBehaviour
             timerText.color = Color.yellow;
             finishSound.Play();
 
-            // High score handling - do this after completing boss, tally up all three times from data
-            /*if (IsHighScore(endTime))
-            {
-                PlayerPrefs.SetInt("ShowNameEntry", 1);
-                PlayerPrefs.SetInt("ShowLeaderboard", 0);
-            }
-            else
-            {
-                PlayerPrefs.SetInt("ShowNameEntry", 0);
-                PlayerPrefs.SetInt("ShowLeaderboard", 1);
-            }*/
-
-            // Save end time (based on scene name)
-            // PlayerPrefs.SetFloat("EndTime", endTime);
-
             // Start the coroutine to show the LevelEnd image and then load the HubWorld scene
             SaveTimeForLevel(SceneManager.GetActiveScene().name, endTime);
             Data.S.lastLevelPlayed = SceneManager.GetActiveScene().name;
@@ -103,9 +92,6 @@ public class Finish : MonoBehaviour
                 Data.S.bossTime = time;
                 break;
         }
-
-        // How this would be saved to playerprefs:
-        // PlayerPrefs.SetFloat(levelName + "Time", time);
     }
 
     // New coroutine for the level completion sequence
@@ -130,5 +116,67 @@ public class Finish : MonoBehaviour
 
         // Load the HubWorld scene
         SceneManager.LoadScene("HubWorld");
+    }
+
+    public void BossDefeated()
+    {
+        gameFinished = true;
+        endTime = Time.time - startTime;
+        timerText.color = Color.yellow;
+
+        SaveTimeForLevel(SceneManager.GetActiveScene().name, endTime);
+
+        // High score handling - do this after completing boss, tally up all three times from data
+        if (IsHighScore(Data.S.level1Time + Data.S.level2Time + Data.S.bossTime) && Data.S.level1Time > 0 && Data.S.level2Time > 0 && Data.S.bossTime > 0)
+        {
+            PlayerPrefs.SetInt("ShowNameEntry", 1);
+            PlayerPrefs.SetInt("ShowLeaderboard", 0);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ShowNameEntry", 0);
+            PlayerPrefs.SetInt("ShowLeaderboard", 1);
+        }
+
+        // Save end time (based on scene name)
+        PlayerPrefs.SetFloat("EndTime", Data.S.level1Time + Data.S.level2Time + Data.S.bossTime);
+
+        StartCoroutine(BossDefeatSequence());
+    }
+
+    private IEnumerator BossDefeatSequence()
+    {
+        // Play finish sound
+        endSound1.Play();
+        endSound2.Play();
+        BGM.Stop();
+
+        // Slow down the timescale
+        Time.timeScale = 0.4f;
+
+        yield return new WaitForSecondsRealtime(0.8f);
+
+        // White screen fade and sound volume decrease
+        float fadeDuration = 5.0f;
+        float startVolume = endSound1.volume;
+        Color startColor = levelEndImage.color;
+        Color endColor = Color.white;
+        for (float t = 0; t < 1; t += Time.unscaledDeltaTime / fadeDuration)
+        {
+            levelEndImage.color = Color.Lerp(startColor, endColor, t);
+            endSound1.volume = Mathf.Lerp(startVolume, 0, t); // Decrease volume
+            yield return null;
+        }
+        levelEndImage.color = endColor; // Ensure it's fully opaque
+        endSound1.volume = 0; // Ensure volume is set to 0
+
+        // Wait another second using unscaled time
+        yield return new WaitForSecondsRealtime(1f);
+
+        // Restore the regular timescale
+        Time.timeScale = 1.0f;
+
+        // Load the MainMenu scene
+        SceneManager.LoadScene("MainMenu");
     }
 }

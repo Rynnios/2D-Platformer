@@ -549,7 +549,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 256
-  bossHealth: 5
+  bossHealth: 8
 --- !u!70 &505329860
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -582,8 +582,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005608124, y: -0.017618917}
-  m_Size: {x: 0.359792, y: 0.1594783}
+  m_Offset: {x: -0.0016374232, y: -0.031914666}
+  m_Size: {x: 0.38679606, y: 0.1880708}
   m_Direction: 1
 --- !u!95 &505329861
 Animator:
@@ -29205,6 +29205,7 @@ MonoBehaviour:
   maxTotalHealth: 8
   isInvincible: 0
   isControlEnabled: 1
+  playerDead: 0
   deathSound: {fileID: 68440216}
   damageSound: {fileID: 68440214}
   jumpSound: {fileID: 68440215}
@@ -29942,6 +29943,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9999999, y: 0.57686543}
   m_EdgeRadius: 0
+--- !u!82 &861580447 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5979022233091157889, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 68440213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &946429279
 GameObject:
   m_ObjectHideFlags: 0
@@ -29975,11 +29981,11 @@ MonoBehaviour:
   cooldownReducer: 0
   moveSpeed: 7
   maxHealth: 3
-  jumpPower: 17
+  jumpPower: 15
   knockbackStrengthX: 8
   knockbackStrengthY: 10
   invincibilityDuration: 2
-  doubleJumpEnabled: 1
+  doubleJumpEnabled: 0
   trueInvincibilityEnabled: 0
   lastLevelPlayed: 
   level1Time: 0
@@ -30335,9 +30341,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finishSound: {fileID: 1395982}
+  endSound1: {fileID: 1570726400}
+  endSound2: {fileID: 1570726399}
+  BGM: {fileID: 861580447}
   levelEndImage: {fileID: 772828330}
   gameFinished: 0
   timerText: {fileID: 1684645007}
+  playerCamera: {fileID: 0}
 --- !u!61 &1120979335
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45628,6 +45638,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &1570726399 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 353085909847715015, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 68440213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1570726400 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2644819552918790303, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 68440213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1582828848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46051,7 +46071,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02013234, y: 0.10144089}
+  m_Offset: {x: 0.02013202, y: 0.10144089}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -46062,7 +46082,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.30988753, y: 0.07323459}
+  m_Size: {x: 0.2495276, y: 0.07323459}
   m_EdgeRadius: 0
 --- !u!114 &1976589410
 MonoBehaviour:

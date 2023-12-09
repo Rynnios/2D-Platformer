@@ -27109,6 +27109,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0abcebec9d0f344b870b82ff48f8431, type: 3}
+--- !u!82 &477208096 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 353085909847715015, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 891065481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &477208097 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2644819552918790303, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 891065481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &499266248
 GameObject:
   m_ObjectHideFlags: 0
@@ -27766,6 +27776,7 @@ MonoBehaviour:
   maxTotalHealth: 8
   isInvincible: 0
   isControlEnabled: 1
+  playerDead: 0
   deathSound: {fileID: 891065486}
   damageSound: {fileID: 1061040582}
   jumpSound: {fileID: 891065485}
@@ -29333,6 +29344,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8253931093982000970, guid: cadd68bdb43c62d45b511953fa5da21c, type: 3}
   m_PrefabInstance: {fileID: 1218447324}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1228161946 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5979022233091157889, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 891065481}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1242266183
 PrefabInstance:
@@ -54718,9 +54734,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finishSound: {fileID: 1268737101}
+  endSound1: {fileID: 477208097}
+  endSound2: {fileID: 477208096}
+  BGM: {fileID: 1228161946}
   levelEndImage: {fileID: 1070199230}
   gameFinished: 0
   timerText: {fileID: 353793729}
+  playerCamera: {fileID: 0}
 --- !u!1001 &1759126151
 PrefabInstance:
   m_ObjectHideFlags: 0

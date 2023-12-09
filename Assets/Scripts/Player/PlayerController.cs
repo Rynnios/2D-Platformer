@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool isControlEnabled = true;
     private bool canDoubleJump = false;
     private bool doubleJumpUsed = false;
+    public bool playerDead = false;
 
     public AudioSource deathSound;
     public AudioSource damageSound;
@@ -89,11 +90,14 @@ public class PlayerController : MonoBehaviour
 
     private void DoubleJump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0); // Reset y velocity
-        rb.AddForce(Vector2.up * 11f, ForceMode2D.Impulse);
-        jumpSound.Play();
-        animator.SetTrigger("doubleJump"); // Make sure to set up a "doubleJump" trigger in your Animator
-        doubleJumpUsed = true; // Prevent further jumps until landing
+        if (!playerDead)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0); // Reset y velocity
+            rb.AddForce(Vector2.up * 11f, ForceMode2D.Impulse);
+            jumpSound.Play();
+            animator.SetTrigger("doubleJump"); // Make sure to set up a "doubleJump" trigger in your Animator
+            doubleJumpUsed = true; // Prevent further jumps until landing
+        } 
     }
 
     private void UpdateAnimationState()
@@ -285,6 +289,8 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerDies()
     {
+        playerDead = true;
+        isInvincible = true;
         deathSound.Play();
         animator.SetTrigger("death");
         rb.bodyType = RigidbodyType2D.Static;

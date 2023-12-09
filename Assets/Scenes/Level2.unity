@@ -244,7 +244,7 @@ Transform:
   m_GameObject: {fileID: 20824921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.312603, y: -0.8899971, z: -10}
+  m_LocalPosition: {x: -36.13333, y: -0.8899971, z: -10}
   m_LocalScale: {x: 1, y: 2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -880,6 +880,7 @@ MonoBehaviour:
   maxTotalHealth: 8
   isInvincible: 0
   isControlEnabled: 1
+  playerDead: 0
   deathSound: {fileID: 887600656}
   damageSound: {fileID: 271211446}
   jumpSound: {fileID: 2065311478}
@@ -1486,6 +1487,11 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 3747395050382546920, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
   m_PrefabInstance: {fileID: 271211445}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &271211447 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 353085909847715015, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 271211445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &271211448 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6664218827873422093, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
@@ -1494,6 +1500,11 @@ AudioSource:
 --- !u!82 &271211449 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2013912003874364403, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 271211445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &271211450 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2644819552918790303, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
   m_PrefabInstance: {fileID: 271211445}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &297363025
@@ -42104,9 +42115,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finishSound: {fileID: 271211449}
+  endSound1: {fileID: 271211450}
+  endSound2: {fileID: 271211447}
+  BGM: {fileID: 1052320857}
   levelEndImage: {fileID: 1617117327}
   gameFinished: 0
   timerText: {fileID: 1318390521}
+  playerCamera: {fileID: 0}
 --- !u!95 &623687425
 Animator:
   serializedVersion: 5
@@ -43229,6 +43244,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8253931093982000970, guid: cadd68bdb43c62d45b511953fa5da21c, type: 3}
   m_PrefabInstance: {fileID: 1007897579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1052320857 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5979022233091157889, guid: f5b52e64951479546ac518c14c0687f4, type: 3}
+  m_PrefabInstance: {fileID: 271211445}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1104481821
 GameObject:

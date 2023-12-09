@@ -109,14 +109,7 @@ public class SkullBoss : MonoBehaviour
 
         if (isTouchingSide)
         {
-            if (facingLeft)
-            {
-                Flip();
-            }
-            else if (!facingLeft)
-            {
-                Flip();
-            }
+            Flip();
         }
         bossRb.velocity = attackMoveSpeed * attackMoveDirection;
     }
@@ -144,6 +137,7 @@ public class SkullBoss : MonoBehaviour
             bossRb.velocity = Vector2.zero;
             hasPlayerPos = false;
             bossAnim.SetTrigger("Squish");
+            StartCoroutine(FreezeBossRoutine(3.0f));
         }
 
     }
@@ -217,9 +211,22 @@ public class SkullBoss : MonoBehaviour
 
     public void checkBossEnraged()
     {
-        if (bossHealth <= 3)
+        if (bossHealth <= 4)
         {
             bossAnim.SetTrigger("enraged");
+            StartCoroutine(FreezeBossRoutine(3.0f));
         }
+    }
+
+    private IEnumerator FreezeBossRoutine(float duration)
+    {
+        // Freeze the boss's movement and position
+        bossRb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        // Wait for the specified duration
+        yield return new WaitForSeconds(duration);
+
+        // Unfreeze the boss's movement and position, but keep rotation frozen if needed
+        bossRb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }
